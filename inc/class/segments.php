@@ -18,25 +18,28 @@ class SEGMENTS
     public function getSegments()
     {
 
-        //$response = array();
-
         $eventID = $_SESSION['event_id'];
 
-        $stmt = $this->db->prepare("SELECT segment_id, segment_name, TIME_FORMAT(start_time,'%H:%i') as start_time FROM segments WHERE event_id=:eventID ORDER BY start_time");
-        $stmt->execute(array(':eventID' => $eventID));
-        $res1 = $stmt->fetchALL(PDO::FETCH_ASSOC);
+        $sql = "
+        
+        SELECT s.segment_id, s.segment_name, e.event_name, e.location, TIME_FORMAT(s.start_time,'%H:%i') as start_time 
+        FROM segments s
+        JOIN events e ON s.event_id = e.event_id 
+        WHERE s.event_id=:eventID 
+        ORDER BY start_time
+        
+        ";
 
-        $stmt = $this->db->prepare("SELECT event_name, location FROM events WHERE event_id=:eventID");
+        $stmt = $this->db->prepare($sql);
         $stmt->execute(array(':eventID' => $eventID));
-        $res2 = $stmt->fetchALL(PDO::FETCH_ASSOC);
+        $res = $stmt->fetchALL(PDO::FETCH_ASSOC);
 
-        $response['segments'] = $res1;
-        $response['event'] = $res2;
+        $response['segments'] = $res;
 
         //print_r($res);
 
         // check for success
-        if ($stmt->rowCount() >= 1) {
+        if ($stmt->rowCount() > 0) {
 
             $response['status'] = 'success';
             $response['message'] = '<span class="fas fa-check-circle"></span> &nbsp; Success.';
@@ -54,10 +57,8 @@ class SEGMENTS
         $response = array();
 
         $stmt = $this->db->prepare("SELECT segment_name as 'Segment Name', TIME_FORMAT(start_time,'%H:%i') as 'Start Time' FROM segments WHERE segment_id=:segmentId");
-        //$stmt->bindParam(':segmentId', $segmentId);
         $stmt->execute(array(':segmentId' => $segmentId));
         $res = $stmt->fetch(PDO::FETCH_ASSOC);
-
 
         $response['events'] = $res;
 
