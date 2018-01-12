@@ -13,44 +13,43 @@ if ($_POST) {
     //Output to csv file section
     //For multi-value records, first line fields
 
-    $keys2 = array_keys($response['segments']);
+    $keys = array_keys($response['segments']);
+    $fields = "";
+
     for ($i = 0; $i < count($response['segments']); $i++) {
-        foreach ($response['segments'][$keys2[$i]] as $key => $value) {
-            $fields = $fields . $key . "_" . $i . ",";
+        foreach ($response['segments'][$keys[$i]] as $key => $value) {
+            if ($key == "segment_name") {
+                $fields = $fields . "sgn_" . $i . ",";
+            } elseif ($key == "start_time") {
+                $fields = $fields . "st_" . $i . ",";
+            }
         }
     }
 
-    $keys3 = array_keys($response['event']);
-    for ($i = 0; $i < count($response['event']); $i++) {
-        foreach ($response['event'][$keys3[$i]] as $key => $value) {
-            $fields = $fields . $key . "_" . $i . ",";
-        }
-    }
-
+    $fields = $fields . "en" . ",";
+    $fields = $fields . "loc" . ",";
     $fields = $fields . "end" . PHP_EOL;
 
     $values = "";
 
-    for ($i = 0; $i < count($response['segments']); $i++) {
-        foreach ($response['segments'][$keys2[$i]] as $key => $value) {
-            if ($key == "start_time") {
-                $time = (date_create($value));
-                //print_r($time);
-                $value = date_format($time,'g:i');
+    $en = $response['segments'][0]['event_name'];
+    $loc = $response['segments'][0]['location'];
 
+    for ($i = 0; $i < count($response['segments']); $i++) {
+        foreach ($response['segments'][$keys[$i]] as $key => $value) {
+            if ($key == "segment_name") {
+                $values = $values . $value . ",";
+            } elseif ($key == "start_time") {
+                $time = (date_create($value));
+                $value = date_format($time, 'g:i');
+                $values = $values . $value . ",";
             }
 
-            $values = $values . $value . ",";
         }
     }
 
-    for ($i = 0; $i < count($response['event']); $i++) {
-        foreach ($response['event'][$keys3[$i]] as $key => $value) {
-            $values = $values . $value . ",";
-        }
-    }
-
-
+    $values = $values . $en . ",";
+    $values = $values . $loc . ",";
     $values = $values . "end";
 
     $my_file = 'segments.csv';
