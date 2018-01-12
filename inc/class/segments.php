@@ -125,6 +125,26 @@ class SEGMENTS
             $response['status'] = 'success';
             $response['message'] = '<span class="fas fa-check-circle"></span> &nbsp; Update successful.';
         } else {
+            $response['status'] = 'error'; // could not update record
+            $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; Nothing changed.';
+        }
+        return $response;
+
+
+    }
+
+    public function deleteSegment($segment_id) {
+
+        $sql = "DELETE FROM segments WHERE segment_id =  :segment_id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':segment_id', $segment_id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            $response['status'] = 'success';
+            $response['message'] = '<span class="fas fa-check-circle"></span> &nbsp; Update successful.';
+        } else {
+            $response['status'] = 'error'; // could not delete record
             $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; Nothing changed.';
         }
         return $response;
@@ -133,11 +153,6 @@ class SEGMENTS
     }
 
 
-        $stmt->execute();
-
-
-
-    }
 
 
 }
