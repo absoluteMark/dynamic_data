@@ -22,7 +22,7 @@ class SEGMENTS
 
         $eventID = $_SESSION['event_id'];
 
-        $stmt = $this->db->prepare("SELECT segment_id, segment_name, start_time FROM segments WHERE event_id=:eventID ORDER BY start_time");
+        $stmt = $this->db->prepare("SELECT segment_id, segment_name, TIME_FORMAT(start_time,'%H:%i') as start_time FROM segments WHERE event_id=:eventID ORDER BY start_time");
         $stmt->execute(array(':eventID' => $eventID));
         $res1 = $stmt->fetchALL(PDO::FETCH_ASSOC);
 
@@ -53,7 +53,7 @@ class SEGMENTS
 
         $response = array();
 
-        $stmt = $this->db->prepare("SELECT * FROM segments WHERE segment_id=:segmentId");
+        $stmt = $this->db->prepare("SELECT segment_name as 'Segment Name', TIME_FORMAT(start_time,'%H:%i') as 'Start Time' FROM segments WHERE segment_id=:segmentId");
         //$stmt->bindParam(':segmentId', $segmentId);
         $stmt->execute(array(':segmentId' => $segmentId));
         $res = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -142,7 +142,7 @@ class SEGMENTS
 
         if ($stmt->rowCount() > 0) {
             $response['status'] = 'success';
-            $response['message'] = '<span class="fas fa-check-circle"></span> &nbsp; Update successful.';
+            $response['message'] = '<span class="fas fa-check-circle"></span> &nbsp; Purge successful.';
         } else {
             $response['status'] = 'error'; // could not delete record
             $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; Nothing changed.';

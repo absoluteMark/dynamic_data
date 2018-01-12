@@ -9,9 +9,11 @@ if ($_POST != "") {
 
     $segment = new SEGMENTS($DB_con);
 
-    $segmentName = $_POST['segment_name'];
-    $segmentID = $_POST['segment_id'];
-    $start_time = $_POST['start_time'];
+    //print_r($_POST);
+
+    $segmentName = $_POST['Segment_Name'];
+    $segmentID = $_POST['segmentId'];//note should be the jQuery passed variable
+    $start_time = $_POST['Start_Time'];
 
     $response = $segment->updateSegment($segmentName,$start_time,$segmentID);
 
@@ -21,7 +23,7 @@ if ($_POST != "") {
 else {
     $response = array();
     $response['status'] = 'error'; // could not create record
-    $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; Must have a name !';
+    $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; Could not update !';
 }
 
 

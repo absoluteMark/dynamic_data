@@ -9,7 +9,7 @@ session_start();
     <div class="card">
         <div class="card-header" id="segment-header">
             <h3 class="float-left text-danger" id="mode">Live Mode</h3>
-            <h3 class="text-right" id="segment-title">Segments</h3>
+            <h3 class="text-right" id="segment-title" onclick="loadSegmentCreate()">Segments</h3>
         </div>
 
         <div class="card-body" id="segment-body" style="height: 568px; overflow: scroll">

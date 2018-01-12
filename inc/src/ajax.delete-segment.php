@@ -9,7 +9,7 @@ if ($_POST != "") {
 
     $segment = new SEGMENTS($DB_con);
 
-    $response = $segment->deleteSegment($_POST['segment_id']);
+    $response = $segment->deleteSegment($_POST['segmentId']);
 
 
 }
