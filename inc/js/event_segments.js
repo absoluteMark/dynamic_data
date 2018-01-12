@@ -281,6 +281,9 @@ function segmentDelete(segmentID) {
 
     data = data + '&segmentId=' + segmentID;
 
+    var error_div = $('#errorDiv5');
+    var buttons = $('button');
+
     var answer = confirm("Are you sure ?");
 
     if (answer === true) {
@@ -297,8 +300,7 @@ function segmentDelete(segmentID) {
 
                 console.log(data);
 
-                var error_div = $('#errorDiv5');
-                var buttons = $('button');
+
 
                 $(buttons).attr('disabled', 'disabled');
 
