@@ -12,9 +12,7 @@ define('INC_PATH',dirname(__DIR__)."/");
 
 
 $DB_host = "localhost";
-
 $DB_user = "root";
-
 $DB_pass = "root";
 $DB_name = "alp_scoreboard";
 
