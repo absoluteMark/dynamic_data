@@ -125,7 +125,6 @@ class SEGMENTS
             $response['status'] = 'success';
             $response['message'] = '<span class="fas fa-check-circle"></span> &nbsp; Update successful.';
         } else {
-            $response['status'] = 'error'; // could not create record
             $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; Nothing changed.';
         }
         return $response;
@@ -133,13 +132,8 @@ class SEGMENTS
 
     }
 
-    public function deleteSegment() {
 
-        $sql = "DELETE FROM movies WHERE filmID =  :filmID";
-        $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':filmID', $_POST['filmID'], PDO::PARAM_INT);
         $stmt->execute();
-
 
 
 

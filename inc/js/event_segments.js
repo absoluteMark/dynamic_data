@@ -32,12 +32,12 @@ function segmentList() {
                     $('#' + div_target_id).html('');
                     $.each(data.segments, function (index, val) {
                         console.log(index, val);
-                        $('#' + div_target_id).append('<div onclick="if(event.altKey){loadSegmentUpdate(' + val.segment_id + ')}else{segmentDetails(' + val.segment_id + ')}" id="segment' + val.segment_id +'" class="list-group-item list-group-item-action" data-toggle="list">' + val.segment_name + '</div>');
+                        $('#' + div_target_id).append('<div onclick="if(event.altKey){loadSegmentUpdate(' + val.segment_id + ')}else{segmentDetails(' + val.segment_id + ')}" id="segment' + val.segment_id + '" class="list-group-item list-group-item-action" data-toggle="list">' + val.segment_name + '</div>');
                     });
                     $('#' + div_results_id).html('');
                     $.each(data.segments, function (index, val) {
                         console.log(index, val);
-                        $('#' + div_results_id).append('<div onclick="enterResults(' + val.segment_id + ')" id="segment' + val.segment_id +'" class="list-group-item list-group-item-action" data-toggle="list">' + val.segment_name + '</div>');
+                        $('#' + div_results_id).append('<div onclick="enterResults(' + val.segment_id + ')" id="segment' + val.segment_id + '" class="list-group-item list-group-item-action" data-toggle="list">' + val.segment_name + '</div>');
                     });
 
                 } else {
@@ -54,8 +54,6 @@ function segmentList() {
         }
 
     });
-
-
 
 
 }
@@ -99,9 +97,9 @@ function loadSegmentUpdate(segmentID) {
                         $('#' + form_target_id).append(html);
                     });
 
-                    $('#' + form_target_id).append('<button type="button" id="cancelSegment" class="btn btn-secondary mr-2" onclick="refreshSegmentList()">Cancel</button>');
-                    $('#' + form_target_id).append('<button type="button" id="deleteSegment" class="btn btn-danger mr-2" onclick="segmentDelete()">Delete</button>');
-                    $('#' + form_target_id).append('<button type="button" id="updateSegment" class="btn btn-primary mr-2" onclick="segmentUpdate()">Update</button>');
+                    $('#' + form_target_id).append('<button type="button" id="cancelSegment" class="btn btn-secondary mr-2" onclick="refreshSegmentList()">Cancel</button>')
+                        .append('<button type="button" id="deleteSegment" class="btn btn-danger mr-2" onclick="segmentDelete()">Delete</button>')
+                        .append('<button type="button" id="updateSegment" class="btn btn-primary mr-2" onclick="segmentUpdate()">Update</button>');
                 })
             }
         },
@@ -113,7 +111,7 @@ function loadSegmentUpdate(segmentID) {
 
 }
 
-function refreshSegmentList(){
+function refreshSegmentList() {
 
     $('#segment-body').html("<div class=\"list-group\" id=\"segment-list\"></div>");
     $('#mode').html('Live Mode').toggleClass('text-danger text-primary');
@@ -181,85 +179,7 @@ function createSegment() {
     return false;
 }
 
-function segmentMain(segmentId) {
-
-    /**
-     *
-     * Loads the segment panel
-     * for the selected segment
-     *
-     *
-     * Editing: Should load updateSegment Modal
-     * if it does not exist (see example above)
-     *
-     *
-     * @param segmentId
-     */
-
-    var div_target_id = 'guest-list';
-
-
-    $.ajax({
-        type: 'GET',
-        url: 'inc/src/ajax.main.segment.php',
-        data: {segmentId: segmentId},
-        datatype: 'json',
-        cache: false,
-        success: function (data) {
-
-            //alert("Status: " + data.status + "\nEvent ID: " + data.events['event_id']);
-
-
-
-            $("#guest-title").html('Segment Details');
-            $("#guest-list").html('Some guests');
-
-            segmentDetails();
-
-        },
-        error: function () {
-            alert('Error !')
-        }
-    });
-
-
-}
-
 function modalClose() {
-
-    /**
-     *
-     * Refreshes the segment panel
-     * on close of the modal
-     *
-     */
-
-
-    $.ajax({
-        type: 'GET',
-        url: 'inc/src/ajax.main.segment.php',
-        data: {segmentId: "refresh"},
-        datatype: 'json',
-        cache: false,
-        success: function (data) {
-            //alert("Status: " + data.status + "\nEvent ID: " + data.events['event_id']);
-
-            $.get("inc/views/segments.php", function (data) {
-                $('#card-body').html(data);
-            });
-
-            segmentDetails();
-
-            $('button#submitBtn4').html('Submit');
-            $('button#submitBtn3').html('Submit');
-            $('button#submitBtn2').html('Submit');
-            $('button#submitBtn1').html('Submit');
-
-        },
-        error: function () {
-            alert('Error !')
-        }
-    });
 
 }
 
@@ -278,7 +198,7 @@ function eventMain() {
 
 }
 
-function segmentUpdate(){
+function segmentUpdate() {
 
     /**
      *
@@ -289,8 +209,6 @@ function segmentUpdate(){
      */
 
     var data = $("#updateSegment-form").serialize();
-
-    //alert(data);
 
     $.ajax({
 
@@ -305,19 +223,18 @@ function segmentUpdate(){
 
             $('button#updateSegment').html('Updating segment ...').attr('disabled', 'disabled');
             $('button#cancelSegment').attr('disabled', 'disabled');
-            $('.modal-body').css('opacity', '.5');
 
             setTimeout(function () {
 
                 if (data.status === 'success') {
 
-                    $('#errorDiv2').slideDown(200, function () {
+                    $('#errorDiv5').slideDown(200, function () {
                         $('#errorDiv5').html('<div class="alert alert-info">' + data.message + '</div>')
                             .delay(3000).slideUp(100);
 
                     });
                 } else {
-                    $('#errorDiv2').slideDown(200, function () {
+                    $('#errorDiv5').slideDown(200, function () {
                         $('#errorDiv5').html('<div class="alert alert-danger">' + data.message + '</div>')
                             .delay(3000).slideUp(100);
                     });
@@ -325,7 +242,6 @@ function segmentUpdate(){
 
                 $('button#updateSegment').html('Update').removeAttr('disabled');
                 $('button#cancelSegment').removeAttr('disabled');
-                $('.modal-body').css('opacity', '');
 
             }, 500);
         },
@@ -334,15 +250,60 @@ function segmentUpdate(){
         }
     });
 
-    //return false;
-
+    return false;
 
 
 }
 
-function segmentDelete(){
+function segmentDelete() {
 
+    var data = $("#updateSegment-form").serialize();
 
+    $.ajax({
+
+        type: 'POST',
+        async: true,
+        url: 'inc/src/ajax.delete-segment.php',
+        data: data,
+        dataType: 'json',
+        success: function (data) {
+
+            console.log(data);
+
+            $('button#deleteSegment').html('Deleting segment ...').attr('disabled', 'disabled');
+            $('button#cancelSegment').attr('disabled', 'disabled');
+            $('button#updateSegment').attr('disabled', 'disabled');
+
+            setTimeout(function () {
+
+                if (data.status === 'success') {
+
+                    $('#errorDiv5').slideDown(200, function () {
+                        $('#errorDiv5').html('<div class="alert alert-info">' + data.message + '</div>')
+                            .delay(3000).slideUp(100);
+
+                    });
+
+                } else {
+                    $('#errorDiv5').slideDown(200, function () {
+                        $('#errorDiv5').html('<div class="alert alert-danger">' + data.message + '</div>')
+                            .delay(3000).slideUp(100);
+                    });
+                }
+
+                $('button#deleteSegment').html('Delete').removeAttr('disabled');
+                $('button#cancelSegment').removeAttr('disabled');
+                $('button#updateSegment').removeAttr('disabled');
+                refreshSegmentList();
+
+            }, 500);
+        },
+        error: function () {
+            alert('Error !')
+        }
+    });
+
+    return false;
 
 
 }
