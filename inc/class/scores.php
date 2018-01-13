@@ -12,7 +12,7 @@
  *
  */
 
-class SCORENAMES
+class SCORES
 {
     private $db;
 
@@ -21,38 +21,37 @@ class SCORENAMES
         $this->db = $DB_con;
     }
 
-    public function getScorenames()
+    public function getScores($sId)
 
     {
 
         $response = array();
 
         $eventID = $_SESSION['event_id'];
-        $segmentID = $_SESSION['segment_id'];
 
-        $stmt = $this->db->prepare("SELECT * FROM scorenames WHERE event_id=:eventID && segment_id=:segmentID");
-        $stmt->execute(array(':eventID' => $eventID, ':segmentID' => $segmentID));
+        $stmt = $this->db->prepare("SELECT s.score_name FROM scores s WHERE event_id=:eventID && segment_id=:segmentID");
+        $stmt->execute(array(':eventID' => $eventID, ':segmentID' => $sId));
         $res = $stmt->fetchALL(PDO::FETCH_ASSOC);
 
-        $response['events'] = $res;
+        $response['scores'] = $res;
 
         //print_r($res);
 
         // check for success
-        if ($stmt->rowCount() >= 1) {
+        if ($stmt->rowCount() > 0) {
 
             $response['status'] = 'success';
             $response['message'] = '<span class="fas fa-check-circle"></span> &nbsp; Success.';
         } else {
 
             $response['status'] = 'error';
-            $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; No scorenames exist. Create one.';
+            $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; No scores exist. Create one.';
         }
         return $response;
     }
 
 
-    public function createScorename($scorename_name)
+    public function createScore($name)
     {
 
         $response = array();
@@ -60,10 +59,10 @@ class SCORENAMES
         $segment_id = $_SESSION['segment_id'];
         $event_id = $_SESSION['event_id'];
 
-        $stmt = $this->db->prepare('INSERT INTO scorenames(scorename_name,segment_id,event_id) VALUES(:scorename_name,:segment_id,:event_id)');
+        $stmt = $this->db->prepare('INSERT INTO scores(score_name,segment_id,event_id) VALUES(:score_name,:segment_id,:event_id)');
 
 
-        $stmt->bindParam(':scorename_name', $scorename_name);
+        $stmt->bindParam(':score_name', $name);
         $stmt->bindParam(':segment_id', $segment_id);
         $stmt->bindParam(':event_id', $event_id);
         $stmt->execute();
@@ -72,11 +71,11 @@ class SCORENAMES
         // check for successful creation
         if ($stmt->rowCount() == 1) {
             $response['status'] = 'success';
-            $response['message'] = '<span class="fas fa-check-circle"></span> &nbsp; Scorename created successfully.';
+            $response['message'] = '<span class="fas fa-check-circle"></span> &nbsp; Score created successfully.';
         } else {
 
             $response['status'] = 'error'; // could not create record
-            $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; Could not create scorename.';
+            $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; Could not create score.';
         }
         return $response;
 

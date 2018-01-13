@@ -6,14 +6,14 @@
  * Time: 1:47 PM
  *
  *
- * Class for contestants
+ * Class for guests
  * or participants or guests
  * on the show segment
  *
  *
  */
 
-class CONTESTANTS
+class GUESTS
 {
     private $db;
 
@@ -22,7 +22,7 @@ class CONTESTANTS
         $this->db = $DB_con;
     }
 
-    public function getContestants($segmentID)
+    public function getGuests($segmentID)
 
 
     {
@@ -35,8 +35,8 @@ class CONTESTANTS
 
         $sql = "
 
-        SELECT c.contestant_name,c.horse_name,c.contestant_id,e.event_name,e.location,s.segment_name
-        FROM contestants c
+        SELECT c.guest_name,c.horse_name,c.guest_id,e.event_name,e.location,s.segment_name
+        FROM guests c
         JOIN events e ON c.event_id = e.event_id
         JOIN segments s ON c.segment_id = s.segment_id
         WHERE c.event_id=:eventID && c.segment_id=:segmentID
@@ -61,23 +61,23 @@ class CONTESTANTS
         } else {
 
             $response['status'] = 'error';
-            $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; No contestants exist. Create one.';
+            $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; No guests exist. Create one.';
         }
         return $response;
     }
 
 
-    public function createContestant($contestant_name, $contestant_number, $horse_name, $segment_id)
+    public function createGuest($guest_name, $guest_number, $horse_name, $segment_id)
     {
 
         $response = array();
 
         $event_id = $_SESSION['event_id'];
 
-        $stmt = $this->db->prepare('INSERT INTO contestants(contestant_number,contestant_name,horse_name,segment_id,event_id) VALUES(:contestant_number,:contestant_name,:horse_name,:segment_id,:event_id)');
+        $stmt = $this->db->prepare('INSERT INTO guests(guest_number,guest_name,horse_name,segment_id,event_id) VALUES(:guest_number,:guest_name,:horse_name,:segment_id,:event_id)');
 
-        $stmt->bindParam(':contestant_number', $contestant_number);
-        $stmt->bindParam(':contestant_name', $contestant_name);
+        $stmt->bindParam(':guest_number', $guest_number);
+        $stmt->bindParam(':guest_name', $guest_name);
         $stmt->bindParam(':horse_name', $horse_name);
         $stmt->bindParam(':segment_id', $segment_id);
         $stmt->bindParam(':event_id', $event_id);
@@ -87,32 +87,32 @@ class CONTESTANTS
         // check for successful creation
         if ($stmt->rowCount() == 1) {
             $response['status'] = 'success';
-            $response['message'] = '<span class="fas fa-check-circle"></span> &nbsp; Contestant created successfully.';
+            $response['message'] = '<span class="fas fa-check-circle"></span> &nbsp; Guest created successfully.';
         } else {
 
             $response['status'] = 'error'; // could not create record
-            $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; Could not create contestant.';
+            $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; Could not create guest.';
         }
         return $response;
 
     }
 
 
-    public function guest_detail($contestantId)
+    public function guest_detail($guestId)
     {
 
         $response = array();
-        
+
         $sql = "
         
-        SELECT c.contestant_name as 'Guest Name', c.horse_name as 'Horse', c.contestant_number as 'Number'
-        FROM contestants c 
-        WHERE c.contestant_id = :contestantId
+        SELECT c.guest_name as 'Guest Name', c.horse_name as 'Horse', c.guest_number as 'Number'
+        FROM guests c 
+        WHERE c.guest_id = :guestId
         
         ";
 
         $stmt = $this->db->prepare($sql);
-        $stmt->execute(array(':contestantId' => $contestantId));
+        $stmt->execute(array(':guestId' => $guestId));
         $res = $stmt->fetch(PDO::FETCH_ASSOC);
 
         $response['guest'] = $res;
@@ -136,14 +136,14 @@ class CONTESTANTS
     public function updateGuest($name,$horse,$number,$id){
 
 
-        $sql = "UPDATE contestants SET contestant_name = :cName, 
-            horse_name = :hName, contestant_number = :cNumber  
-            WHERE contestant_id = :cId";
+        $sql = "UPDATE guests SET guest_name = :gName, 
+            horse_name = :hName, guest_number = :gNumber  
+            WHERE guest_id = :gId";
         $stmt = $this->db->prepare($sql);
-        $stmt->bindParam(':cName', $name, PDO::PARAM_STR);
+        $stmt->bindParam(':gName', $name, PDO::PARAM_STR);
         $stmt->bindParam(':hName', $horse, PDO::PARAM_STR);
-        $stmt->bindParam(':cNumber', $number, PDO::PARAM_STR);
-        $stmt->bindParam(':cId', $id, PDO::PARAM_STR);
+        $stmt->bindParam(':gNumber', $number, PDO::PARAM_STR);
+        $stmt->bindParam(':gId', $id, PDO::PARAM_STR);
         $stmt->execute();
 
         if ($stmt->rowCount() > 0) {
@@ -160,9 +160,9 @@ class CONTESTANTS
 
     public function deleteGuest($id) {
 
-        $sql = "DELETE FROM contestants WHERE contestant_id =  :cId";
+        $sql = "DELETE FROM guests WHERE guest_id =  :gId";
         $stmt = $this->db->prepare($sql);
-        $stmt->bindParam(':cId', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':gId', $id, PDO::PARAM_INT);
         $stmt->execute();
 
         if ($stmt->rowCount() > 0) {
@@ -176,5 +176,5 @@ class CONTESTANTS
 
 
     }
-    
+
 }

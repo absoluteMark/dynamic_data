@@ -8,9 +8,9 @@ if ($_POST['segmentID']) {
 
     $_SESSION['segmentID'] = $_POST['segmentID'];
     $segmentID = $_POST['segmentID'];
-    $contestant = new CONTESTANTS($DB_con);
+    $guest = new GUESTS($DB_con);
 
-    $response = $contestant->getContestants($segmentID);
+    $response = $guest->getGuests($segmentID);
 
     //Output to csv file section
     //For multi-value records, first line fields

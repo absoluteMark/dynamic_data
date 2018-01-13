@@ -30,8 +30,8 @@ catch(PDOException $e)
 include_once INC_PATH.'class/class.user.php';
 include_once INC_PATH.'class/events.php';
 include_once INC_PATH.'class/segments.php';
-include_once INC_PATH.'class/contestants.php';
-include_once INC_PATH.'class/scorenames.php';
+include_once INC_PATH.'class/guests.php';
+include_once INC_PATH.'class/scores.php';
 include_once INC_PATH.'class/judges.php';
 include_once INC_PATH.'class/results.php';
 

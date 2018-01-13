@@ -1,15 +1,11 @@
-function segmentList() {
+/**
+ *
+ * Segment CRUD functions
+ *
+ *
+ */
 
-    /**
-     *
-     * Automatically loads
-     * the segment index for
-     * the selected event
-     *
-     * Creates dynamic links
-     * for each segment found
-     *
-     */
+function segmentList() {
 
     var div_target_id = 'segment-list';
     var div_results_id = 'results-list';
@@ -86,6 +82,7 @@ function loadSegmentUpdate(segmentID) {
                     $('#mode').html('Edit Mode').toggleClass('text-danger text-primary');
                     $('#segment-title').html('Update');
 
+                    $('#alert').append('<div class="small text-right" id="hint">Update the Segment Details</div>');
 
                     $.each(data.events, function (index, val) {
                         console.log(index, val);
@@ -97,7 +94,7 @@ function loadSegmentUpdate(segmentID) {
                     });
 
                     $('#guest-link').append('<a class=\"nav-link\" href=\"#\" onclick=\"loadGuestCreate(' + segmentID + ')\">Guests</a>');
-                    $('#score-link').append('<a class=\"nav-link\" href=\"#\" onclick=\"loadGuestCreate(' + segmentID + ')\">Scoring</a>');
+                    $('#score-link').append('<a class=\"nav-link\" href=\"#\" onclick=\"loadScoreCreate(' + segmentID + ')\">Scoring</a>');
 
                     $('#' + form_target_id).append('<div class="d-flex justify-content-around"><button type="button" id="cancelSegment" class="btn btn-secondary btn-sm mr-2" onclick="refreshSegmentList()">Back</button>' +
                         '<button type="button" id="updateSegment" class="btn btn-primary btn-sm mr-2" onclick="segmentUpdate(' + segmentID + ')">Update</button>' +
@@ -308,13 +305,21 @@ function segmentDelete(segmentID) {
 
 }
 
+/**
+ *
+ *
+ * Guest CRUD functions
+ *
+ * @param segmentID,contestantID
+ */
+
 function refreshGuestList(segmentID) {
 
     var div_target_id = 'guest-list';
 
     $.ajax({
         type: 'POST',
-        url: 'inc/src/ajax.get-contestants.php',
+        url: 'inc/src/ajax.get-guests.php',
         data: {segmentID: segmentID},
         datatype: 'json',
         cache: false,
@@ -329,7 +334,7 @@ function refreshGuestList(segmentID) {
                     $('#' + div_target_id).html('').slideDown();
                     $.each(data.guests, function (index, val) {
                         console.log(index, val);
-                        $('#' + div_target_id).append('<div onclick="if(event.altKey){loadGuestUpdate(' + val.contestant_id + ',' + segmentID +')}else{selectGuest(' + val.contestant_id + ')}" id="guest' + val.contestant_id + '" class="list-group-item list-group-item-action" data-toggle="list">' + val.contestant_name + '</div>');
+                        $('#' + div_target_id).append('<div onclick="if(event.altKey){loadGuestUpdate(' + val.guest_id + ',' + segmentID +')}else{selectGuest(' + val.guest_id + ')}" id="guest' + val.guest_id + '" class="list-group-item list-group-item-action" data-toggle="list">' + val.guest_name + '</div>');
 
                     });
 
@@ -357,7 +362,7 @@ function loadGuestUpdate(guestID,segmentID) {
 
     $.ajax({
         type: 'POST',
-        url: 'inc/src/ajax.main.contestant.php',
+        url: 'inc/src/ajax.main.guest.php',
         data: {guestId: guestID},
         datatype: 'json',
         cache: false,
@@ -371,6 +376,8 @@ function loadGuestUpdate(guestID,segmentID) {
                     $('#mode').html('Edit Mode').toggleClass('text-danger text-primary');
                     $('#segment-title').html('Update');
 
+                    $('#alert').append('<div class="small text-right" id="hint">Update the Guest Details</div>');
+
 
                     $.each(data.guest, function (index, val) {
                         console.log(index, val);
@@ -382,7 +389,7 @@ function loadGuestUpdate(guestID,segmentID) {
                     });
 
                     $('#guest-link').append('<a class=\"nav-link\" href=\"#\" onclick=\"loadGuestCreate(' + segmentID + ')\">Guests</a>');
-                    $('#score-link').append('<a class=\"nav-link\" href=\"#\" onclick=\"loadGuestCreate(' + segmentID + ')\">Scoring</a>');
+                    $('#score-link').append('<a class=\"nav-link\" href=\"#\" onclick=\"loadScoreCreate(' + segmentID + ')\">Scoring</a>');
 
                     $('#' + form_target_id).append('<div class="d-flex justify-content-around"><button type="button" id="cancelSegment" class="btn btn-secondary btn-sm mr-2" onclick="refreshSegmentList(' + segmentID + ')">Back</button>' +
                         '<button type="button" id="updateSegment" class="btn btn-primary btn-sm mr-2" onclick="guestUpdate(' + guestID + ')">Update</button>' +
@@ -406,7 +413,7 @@ function createGuest(segmentID) {
     var errorDiv = $('#errorDiv3');
     var submitBtn = $('#submitBtn3');
     var closeBtn = $('#closeBtn3');
-    var form = $('#contestant-form');
+    var form = $('#guest-form');
 
     var data = $(form).serialize();
     data = data + '&segmentId=' + segmentID;
@@ -416,7 +423,7 @@ function createGuest(segmentID) {
 
         type: 'POST',
         async: true,
-        url: 'inc/src/ajax.create-contestant.php',
+        url: 'inc/src/ajax.create-guest.php',
         data: data,
         dataType: 'json',
         success: function (data) {
@@ -484,21 +491,10 @@ function loadGuestCreate(segmentID) {
 
 }
 
-function loadScoreCreate() {
-
-    $.get("inc/views/createScore.php", function (view) {
-        $('#segment-body').html(view);
-        $('#mode').html('Edit Mode').toggleClass('text-danger text-primary');
-        $('#segment-title').html('Create');
-
-    });
-
-}
-
-function guestUpdate(contestantID) {
+function guestUpdate(guestID) {
 
     var data = $("#update-form").serialize();
-    data = data + '&cId=' + contestantID;
+    data = data + '&gId=' + guestID;
 
     var errorDiv = $('#errorDiv5');
     var updateBtn = $('#updateSegment');
@@ -557,73 +553,155 @@ function guestUpdate(contestantID) {
 
 }
 
-function guestDelete(contestantID) {
+function guestDelete(guestID) {
 
-    var data = $("#updateGuest-form").serialize();
-
-    data = data + '&segmentId=' + segmentID;
-
-    var error_div = $('#errorDiv5');
-    var buttons = $('button');
-
-    var answer = confirm("Are you sure ?");
-
-    if (answer === true) {
-
-
-        $.ajax({
-
-            type: 'POST',
-            async: true,
-            url: 'inc/src/ajax.delete-segment.php',
-            data: data,
-            dataType: 'json',
-            success: function (data) {
-
-                console.log(data);
-
-
-                $(buttons).attr('disabled', 'disabled');
-
-                $(error_div).html('<div class="alert alert-warning">Purging data ...</div>').slideDown(200).delay(500);
-
-
-                if (data.status === 'success') {
-
-                    $(error_div).show(200, function () {
-                        $(error_div).html('<div class="alert alert-success">' + data.message + '</div>')
-                            .delay(500).slideUp(100);
-
-                    });
-
-                } else {
-                    $(error_div).show(200, function () {
-                        $(error_div).html('<div class="alert alert-danger">' + data.message + '</div>')
-                            .delay(500).slideUp(100);
-                    });
-                }
-
-                $(buttons).removeAttr('disabled');
-
-                setTimeout(function () {
-                    refreshSegmentList();
-
-                }, 500);
-
-
-            },
-            error: function () {
-                alert('Error !')
-            }
-        });
-
-
-    }
 
 
 }
 
-function selectGuest(contestantID) {
+function selectGuest(guestID) {
+
+
+}
+
+/**
+ *
+ * Score CRUD functions
+ *
+ *
+ */
+
+function loadScoreCreate(segmentID) {
+
+    $.get("inc/views/createScore.php", function (view) {
+        $('#segment-body').html(view);
+        $('#mode').html('Edit Mode').toggleClass('text-danger text-primary');
+        $('#segment-title').html('Create');
+
+        var buttons = $('#score-buttons');
+
+        $(buttons).append('<button type=\"button\" id=\"closeBtn3\" class=\"btn btn-secondary\" ' +
+            'onclick=\"loadSegmentUpdate(' + segmentID + ')\">Back</button>');
+
+        $(buttons).append('<button type=\"button\" id=\"submitBtn3\" class=\"btn btn-primary\" ' +
+            'onclick=\"createScore(' + segmentID + ')\">Submit</button>');
+
+    });
+
+    refreshScoreList(segmentID);
+
+}
+
+function loadScoreUpdate() {
+
+
+
+
+}
+
+function createScore() {
+
+    var data = $("#scorename-form").serialize();
+
+    //alert(data);
+
+    $.ajax({
+
+        type: 'POST',
+        async: true,
+        url: 'inc/src/ajax.create-score.php',
+        data: data,
+        dataType: 'json',
+        success: function (data) {
+
+            console.log(data);
+
+            $('button#submitBtn4').html('Creating scorename ...').attr('disabled', 'disabled');
+            $('button#closeBtn4').attr('disabled', 'disabled');
+            $('.modal-body').css('opacity', '.5');
+
+            setTimeout(function () {
+
+                if (data.status === 'success') {
+
+                    $('#errorDiv4').slideDown(200, function () {
+                        $('#errorDiv4').html('<div class="alert alert-info">' + data.message + '</div>')
+                            .delay(3000).slideUp(100);
+                        $("#scorename-form")[0].reset();
+                    });
+                } else {
+                    $('#errorDiv4').slideDown(200, function () {
+                        $('#errorDiv4').html('<div class="alert alert-danger">' + data.message + '</div>')
+                            .delay(3000).slideUp(100);
+                    });
+                }
+
+                $('button#submitBtn4').html('Create Another ?').removeAttr('disabled');
+                $('button#closeBtn4').removeAttr('disabled');
+                $('.modal-body').css('opacity', '');
+
+            }, 500);
+        },
+        error: function () {
+            alert('Error !')
+        }
+    });
+    return false;
+
+}
+
+function refreshScoreList(segmentID) {
+
+    var div_target_id = 'guest-list';
+
+    $.ajax({
+        type: 'POST',
+        url: 'inc/src/ajax.get-scores.php',
+        data: {segmentId: segmentID},
+        datatype: 'json',
+        cache: false,
+        success: function (data) {
+
+            console.log(data);
+
+            //alert("Status: " + data.status + "\nMessage: " + data.message);
+
+            setTimeout(function () {
+                if (data.status === 'success') {
+                    $('#' + div_target_id).html('');
+                    $.each(data.events, function (index, val) {
+                        console.log(index, val);
+                        $('#' + div_target_id).append('<div class="list-group-item list-group-item-action">' + val.scorename_name + '</div>');
+                    });
+
+                } else {
+
+                    $('#' + div_target_id).slideDown(200, function () {
+                        $('#' + div_target_id).html('<div class="alert alert-danger">' + data.message + '</div>')
+                            .delay(3000).slideUp(100);
+                    });
+                }
+            }, 500);
+        },
+        error: function () {
+            alert('Error !')
+        }
+
+
+    });
+
+    getJudges();
+
+}
+
+function scoreUpdate(){
+
+
+
+}
+
+function scoreDelete(){
+
 
 
 }

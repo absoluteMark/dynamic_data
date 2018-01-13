@@ -16,13 +16,13 @@ require_once 'dbconfig.php';
 
 if ($_POST['guestId']) {
 
-    $contestant = new CONTESTANTS($DB_con);
+    $guest = new GUESTS($DB_con);
 
     //print_r($_POST);
 
     $guestId = $_POST['guestId'];
 
-    $response = $contestant->guest_detail($guestId);
+    $response = $guest->guest_detail($guestId);
 
 } else {
     $response = array();

@@ -11,8 +11,8 @@ session_start();
     </li>
 </ul>
 
-<div class="alert alert-info" role="alert">
-    <div class="small text-right">Update the Segment Details</div>
+<div class="alert alert-info" role="alert" id="alert">
+
 </div>
 
 <form role="form" id="update-form">

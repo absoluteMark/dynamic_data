@@ -5,18 +5,18 @@ header('Content-type: application/json');
 require_once 'dbconfig.php';
 
 
-if ($_POST['contestant_name']!="") {
+if ($_POST['guest_name']!="") {
 
-    $contestant = new CONTESTANTS($DB_con);
+    $guest = new GUESTS($DB_con);
 
     //print_r($_POST);
 
-    $contestant_name = $_POST['contestant_name'];
-    $contestant_number = $_POST['contestant_number'];
+    $guest_name = $_POST['guest_name'];
+    $guest_number = $_POST['guest_number'];
     $horse_name = $_POST['horse_name'];
     $segment_id = $_POST['segmentId'];
 
-    $response = $contestant->createContestant($contestant_name, $contestant_number, $horse_name, $segment_id);
+    $response = $guest->createGuest($guest_name, $guest_number, $horse_name, $segment_id);
 
 }
 else {

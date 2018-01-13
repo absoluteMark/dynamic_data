@@ -7,9 +7,9 @@ require_once 'dbconfig.php';
 
 if ($_POST) {
 
-    $scorename = new SCORENAMES($DB_con);
+    $score = new SCORES($DB_con);
 
-    $response = $scorename->getScorenames();
+    $response = $score->getScores($_POST['segmentId']);
 
 } else {
     $response = array();
