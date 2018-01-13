@@ -26,7 +26,7 @@ session_start();
     <div class="card">
         <div class="card-header" id="guest-header">
 
-            <h3 class="text-right" id="guest-title" onclick="">Guests</h3>
+            <h3 class="text-right" id="guest-title">Guests</h3>
         </div>
 
         <div class="card-body" id="guest-body" style="height: 250px;">

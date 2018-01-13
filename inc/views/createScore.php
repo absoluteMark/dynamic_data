@@ -19,6 +19,6 @@ session_start();
 <div class="d-flex justify-content-around" id="score-buttons">
 </div>
 
-<div id="errorDiv4" class="mt-4"></div>
+<div id="errorDiv" class="mt-4"></div>
 
 

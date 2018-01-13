@@ -20,7 +20,4 @@ session_start();
 </form>
 
 
-<div id="errorDiv2" class="mt-4"></div>
-
-
-<div id="errorDiv5" class="mt-4"></div>
+<div id="errorDiv" class="mt-4"></div>

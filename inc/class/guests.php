@@ -30,7 +30,6 @@ class GUESTS
         $response = array();
 
         $eventID = $_SESSION['event_id'];
-        //$segmentID = $_SESSION['segment_id'];
 
 
         $sql = "

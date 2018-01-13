@@ -894,10 +894,10 @@
       <Charset>utf8mb4</Charset>
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
-    <table id="225" parent="2" name="contestants">
+    <table id="225" parent="2" name="events">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="226" parent="2" name="events">
+    <table id="226" parent="2" name="guests">
       <Engine>InnoDB</Engine>
     </table>
     <table id="227" parent="2" name="judges">
@@ -906,7 +906,7 @@
     <table id="228" parent="2" name="results">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="229" parent="2" name="scorenames">
+    <table id="229" parent="2" name="scores">
       <Engine>InnoDB</Engine>
     </table>
     <table id="230" parent="2" name="segments">
@@ -915,61 +915,91 @@
     <table id="231" parent="2" name="users">
       <Engine>InnoDB</Engine>
     </table>
-    <column id="232" parent="225" name="contestant_id">
+    <column id="232" parent="225" name="event_id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="233" parent="225" name="contestant_number">
+    <column id="233" parent="225" name="event_name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="234" parent="225" name="event_logo">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="235" parent="225" name="location">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="236" parent="225" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>event_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="237" parent="226" name="guest_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="238" parent="226" name="guest_number">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="234" parent="225" name="contestant_name">
+    <column id="239" parent="226" name="guest_name">
       <Position>3</Position>
       <DataType>varchar(60)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="235" parent="225" name="horse_name">
+    <column id="240" parent="226" name="horse_name">
       <Position>4</Position>
       <DataType>varchar(60)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="236" parent="225" name="flag_url">
+    <column id="241" parent="226" name="country">
       <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="237" parent="225" name="event_id">
+    <column id="242" parent="226" name="event_id">
       <Position>6</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="238" parent="225" name="segment_id">
+    <column id="243" parent="226" name="segment_id">
       <Position>7</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="239" parent="225" name="event_id">
+    <index id="244" parent="226" name="event_id">
       <ColNames>event_id</ColNames>
     </index>
-    <index id="240" parent="225" name="segment_id">
+    <index id="245" parent="226" name="segment_id">
       <ColNames>segment_id</ColNames>
     </index>
-    <key id="241" parent="225" name="PRIMARY">
+    <key id="246" parent="226" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>contestant_id</ColNames>
+      <ColNames>guest_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="242" parent="225" name="contestants_ibfk_1">
+    <foreign-key id="247" parent="226" name="guests_ibfk_1">
       <ColNames>event_id</ColNames>
       <RefSchemaName>alp_scoreboard</RefSchemaName>
       <RefTableName>events</RefTableName>
@@ -977,7 +1007,7 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="243" parent="225" name="contestants_ibfk_2">
+    <foreign-key id="248" parent="226" name="guests_ibfk_2">
       <ColNames>segment_id</ColNames>
       <RefSchemaName>alp_scoreboard</RefSchemaName>
       <RefTableName>segments</RefTableName>
@@ -985,36 +1015,6 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="244" parent="226" name="event_id">
-      <Position>1</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="245" parent="226" name="event_name">
-      <Position>2</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="246" parent="226" name="event_logo">
-      <Position>3</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="247" parent="226" name="location">
-      <Position>4</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="248" parent="226" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>event_id</ColNames>
-      <Primary>1</Primary>
-    </key>
     <column id="249" parent="227" name="judge_id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
@@ -1082,13 +1082,13 @@
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="261" parent="228" name="contestant_id">
+    <column id="261" parent="228" name="guest_id">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="262" parent="228" name="scorename_id">
+    <column id="262" parent="228" name="score_id">
       <Position>5</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
@@ -1113,10 +1113,10 @@
       <ColNames>segment_id</ColNames>
     </index>
     <index id="267" parent="228" name="contestant_id">
-      <ColNames>contestant_id</ColNames>
+      <ColNames>guest_id</ColNames>
     </index>
     <index id="268" parent="228" name="scorename_id">
-      <ColNames>scorename_id</ColNames>
+      <ColNames>score_id</ColNames>
     </index>
     <index id="269" parent="228" name="judge_id">
       <ColNames>judge_id</ColNames>
@@ -1143,35 +1143,35 @@
       <OnDelete>cascade</OnDelete>
     </foreign-key>
     <foreign-key id="273" parent="228" name="results_ibfk_3">
-      <ColNames>contestant_id</ColNames>
+      <ColNames>guest_id</ColNames>
       <RefSchemaName>alp_scoreboard</RefSchemaName>
-      <RefTableName>contestants</RefTableName>
-      <RefColNames>contestant_id</RefColNames>
+      <RefTableName>guests</RefTableName>
+      <RefColNames>guest_id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
     <foreign-key id="274" parent="228" name="results_ibfk_4">
-      <ColNames>scorename_id</ColNames>
+      <ColNames>score_id</ColNames>
       <RefSchemaName>alp_scoreboard</RefSchemaName>
-      <RefTableName>scorenames</RefTableName>
-      <RefColNames>scorename_id</RefColNames>
+      <RefTableName>scores</RefTableName>
+      <RefColNames>score_id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="275" parent="229" name="scorename_id">
+    <column id="275" parent="229" name="score_id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="276" parent="229" name="scorename_type">
+    <column id="276" parent="229" name="score_type">
       <Position>2</Position>
       <DataType>varchar(60)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="277" parent="229" name="scorename_name">
+    <column id="277" parent="229" name="score_name">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
@@ -1197,10 +1197,10 @@
     </index>
     <key id="282" parent="229" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>scorename_id</ColNames>
+      <ColNames>score_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="283" parent="229" name="scorenames_ibfk_1">
+    <foreign-key id="283" parent="229" name="scores_ibfk_1">
       <ColNames>event_id</ColNames>
       <RefSchemaName>alp_scoreboard</RefSchemaName>
       <RefTableName>events</RefTableName>
@@ -1208,7 +1208,7 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="284" parent="229" name="scorenames_ibfk_2">
+    <foreign-key id="284" parent="229" name="scores_ibfk_2">
       <ColNames>segment_id</ColNames>
       <RefSchemaName>alp_scoreboard</RefSchemaName>
       <RefTableName>segments</RefTableName>
