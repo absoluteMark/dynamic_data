@@ -48,7 +48,7 @@ class CONTESTANTS
         $stmt = $this->db->prepare($sql);
         $stmt->execute(array(':eventID' => $eventID, ':segmentID' => $segmentID));
         $res = $stmt->fetchALL(PDO::FETCH_ASSOC);
-        $response['joined'] = $res;
+        $response['guests'] = $res;
 
 
         //print_r($res);
@@ -67,12 +67,11 @@ class CONTESTANTS
     }
 
 
-    public function createContestant($contestant_name, $contestant_number, $horse_name)
+    public function createContestant($contestant_name, $contestant_number, $horse_name, $segment_id)
     {
 
         $response = array();
 
-        $segment_id = $_SESSION['segment_id'];
         $event_id = $_SESSION['event_id'];
 
         $stmt = $this->db->prepare('INSERT INTO contestants(contestant_number,contestant_name,horse_name,segment_id,event_id) VALUES(:contestant_number,:contestant_name,:horse_name,:segment_id,:event_id)');
@@ -99,4 +98,83 @@ class CONTESTANTS
     }
 
 
+    public function guest_detail($contestantId)
+    {
+
+        $response = array();
+        
+        $sql = "
+        
+        SELECT c.contestant_name as 'Guest Name', c.horse_name as 'Horse', c.contestant_number as 'Number'
+        FROM contestants c 
+        WHERE c.contestant_id = :contestantId
+        
+        ";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(array(':contestantId' => $contestantId));
+        $res = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $response['guest'] = $res;
+
+        //print_r($res);
+
+        // check for success
+        if ($stmt->rowCount() == 1) {
+
+            $response['status'] = 'success';
+            $response['message'] = '<span class="fas fa-check-circle"></span> &nbsp; Success.';
+        } else {
+
+            $response['status'] = 'error';
+            $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; Error.';
+        }
+        return $response;
+
+    }
+
+    public function updateGuest($name,$horse,$number,$id){
+
+
+        $sql = "UPDATE contestants SET contestant_name = :cName, 
+            horse_name = :hName, contestant_number = :cNumber  
+            WHERE contestant_id = :cId";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':cName', $name, PDO::PARAM_STR);
+        $stmt->bindParam(':hName', $horse, PDO::PARAM_STR);
+        $stmt->bindParam(':cNumber', $number, PDO::PARAM_STR);
+        $stmt->bindParam(':cId', $id, PDO::PARAM_STR);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            $response['status'] = 'success';
+            $response['message'] = '<span class="fas fa-check-circle"></span> &nbsp; Update successful.';
+        } else {
+            $response['status'] = 'error'; // could not update record
+            $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; Nothing changed.';
+        }
+        return $response;
+
+
+    }
+
+    public function deleteGuest($id) {
+
+        $sql = "DELETE FROM contestants WHERE contestant_id =  :cId";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':cId', $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            $response['status'] = 'success';
+            $response['message'] = '<span class="fas fa-check-circle"></span> &nbsp; Purge successful.';
+        } else {
+            $response['status'] = 'error'; // could not delete record
+            $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; Nothing changed.';
+        }
+        return $response;
+
+
+    }
+    
 }

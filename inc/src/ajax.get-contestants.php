@@ -4,7 +4,6 @@ header('Content-type: application/json');
 
 require_once 'dbconfig.php';
 
-
 if ($_POST['segmentID']) {
 
     $_SESSION['segmentID'] = $_POST['segmentID'];
@@ -13,28 +12,27 @@ if ($_POST['segmentID']) {
 
     $response = $contestant->getContestants($segmentID);
 
-    //print_r($response['joined']);
     //Output to csv file section
     //For multi-value records, first line fields
 
-    $keys = array_keys($response['joined']);
+    $keys = array_keys($response['guests']);
     $fields = "";
-    for ($i = 0; $i < count($response['joined']); $i++) {
-        foreach ($response['joined'][$keys[$i]] as $key => $value) {
+    for ($i = 0; $i < count($response['guests']); $i++) {
+        foreach ($response['guests'][$keys[$i]] as $key => $value) {
             $fields = $fields . $key . "_" . $i . ",";
         }
     }
     $fields = $fields . "end" . PHP_EOL;
 
     $values = "";
-    for ($i = 0; $i < count($response['joined']); $i++) {
-        foreach ($response['joined'][$keys[$i]] as $key => $value) {
+    for ($i = 0; $i < count($response['guests']); $i++) {
+        foreach ($response['guests'][$keys[$i]] as $key => $value) {
             $values = $values . $value . ",";
         }
     }
     $values = $values . "end";
 
-    $my_file = 'contestants.csv';
+    $my_file = 'guests.csv';
     $this_dir = dirname(__FILE__);
     $parent_dir = realpath($this_dir . '/..');
     $grandparent_dir = realpath($parent_dir . '/..');

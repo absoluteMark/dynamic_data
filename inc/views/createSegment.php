@@ -5,8 +5,9 @@ session_start();
 ?>
 
 
-<p class="info">Create a new Segment.<br />
-</p>
+<div class="alert alert-info" role="alert">
+    <div class="small text-right">Create a new Segment</div>
+</div>
 <form role="form" id="segment-form">
     <div class="form-group">
         <input type="text" class="form-control" name="segment_name" id="segment_name" placeholder="Title" autofocus>

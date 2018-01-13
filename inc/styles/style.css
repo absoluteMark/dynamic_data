@@ -14,6 +14,12 @@ body {
     display: initial;
 }
 
+.card-body{
+
+    height: 568px;
+    overflow: auto;
+}
+
 .container
 {
     margin-top:20px;

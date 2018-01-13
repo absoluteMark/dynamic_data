@@ -17,10 +17,6 @@ $(document).ready(function () {
 
     var list_target_id = 'list-target';
 
-    //Display 'loading' status in the target select list
-    $('#' + list_target_id).html('<option value="">Loading...</option>');
-
-
     if ($('#eventModal').length) {
 
     } else {
@@ -71,6 +67,7 @@ $(document).ready(function () {
 
     $("select#list-target").change(function () {
         var selectedEvent = $("#list-target option:selected").val();
+
         //alert("You have selected the event - " + selectedEvent);
 
         $.ajax({

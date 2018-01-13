@@ -28,11 +28,10 @@ class EVENTS
         $response['events'] = $res;
 
         // check for success
-        if ($stmt->rowCount() > 1) {
+        if ($stmt->rowCount() > 0) {
             $response['status'] = 'success';
             $response['message'] = '<span class="fas fa-check-circle"></span> &nbsp; Success.';
         } else {
-
             $response['status'] = 'error';
             $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; Error.';
         }

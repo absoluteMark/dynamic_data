@@ -11,8 +11,7 @@ session_start();
             <h3 class="float-left text-danger" id="mode">Live Mode</h3>
             <h3 class="text-right" id="segment-title" onclick="loadSegmentCreate()">Segments</h3>
         </div>
-
-        <div class="card-body" id="segment-body" style="height: 568px; overflow: scroll">
+        <div class="card-body" id="segment-body">
 
 
             <div class="list-group" id="segment-list">
@@ -27,10 +26,10 @@ session_start();
     <div class="card">
         <div class="card-header" id="guest-header">
 
-            <h3 class="text-right" id="guest-title">Guests</h3>
+            <h3 class="text-right" id="guest-title" onclick="">Guests</h3>
         </div>
 
-        <div class="card-body" id="guest-body" style="height: 250px; overflow: scroll">
+        <div class="card-body" id="guest-body" style="height: 250px;">
 
 
             <div class="list-group" id="guest-list">
@@ -45,7 +44,7 @@ session_start();
             <h3 class="text-right" id="host-title">Hosts</h3>
         </div>
 
-        <div class="card-body" id="host-body" style="height: 250px; overflow: scroll">
+        <div class="card-body" id="host-body" style="height: 250px;">
 
 
             <div class="list-group" id="host-list">
@@ -62,7 +61,7 @@ session_start();
             <h3 class="text-right" id="results-title">Results</h3>
         </div>
 
-        <div class="card-body" id="results-body" style="height: 568px; overflow: scroll">
+        <div class="card-body" id="results-body">
 
 
             <div class="list-group" id="results-list">
