@@ -67,7 +67,7 @@ function loadSegmentCreate() {
 
 function loadSegmentUpdate(segmentID) {
 
-    var form_target_id = "updateSegment-form";
+    var form_target_id = "update-form";
 
 
     $.ajax({
@@ -81,7 +81,7 @@ function loadSegmentUpdate(segmentID) {
             //alert("Status: " + data.status + "\nMessage: " + data.message);
 
             if (data.status === 'success') {
-                $.get("inc/views/updateSegment.php", function (view) {
+                $.get("inc/views/update.php", function (view) {
                     $('#segment-body').html(view);
                     $('#mode').html('Edit Mode').toggleClass('text-danger text-primary');
                     $('#segment-title').html('Update');
@@ -353,7 +353,7 @@ function refreshGuestList(segmentID) {
 
 function loadGuestUpdate(guestID,segmentID) {
 
-    var form_target_id = "updateSegment-form";
+    var form_target_id = "update-form";
 
     $.ajax({
         type: 'POST',
@@ -366,7 +366,7 @@ function loadGuestUpdate(guestID,segmentID) {
             //alert("Status: " + data.status + "\nMessage: " + data.message);
 
             if (data.status === 'success') {
-                $.get("inc/views/updateSegment.php", function (view) {
+                $.get("inc/views/update.php", function (view) {
                     $('#segment-body').html(view);
                     $('#mode').html('Edit Mode').toggleClass('text-danger text-primary');
                     $('#segment-title').html('Update');
@@ -384,7 +384,7 @@ function loadGuestUpdate(guestID,segmentID) {
                     $('#guest-link').append('<a class=\"nav-link\" href=\"#\" onclick=\"loadGuestCreate(' + segmentID + ')\">Guests</a>');
                     $('#score-link').append('<a class=\"nav-link\" href=\"#\" onclick=\"loadGuestCreate(' + segmentID + ')\">Scoring</a>');
 
-                    $('#' + form_target_id).append('<div class="d-flex justify-content-around"><button type="button" id="cancelSegment" class="btn btn-secondary btn-sm mr-2" onclick="refreshGuestList(' + segmentID + ')">Back</button>' +
+                    $('#' + form_target_id).append('<div class="d-flex justify-content-around"><button type="button" id="cancelSegment" class="btn btn-secondary btn-sm mr-2" onclick="refreshSegmentList(' + segmentID + ')">Back</button>' +
                         '<button type="button" id="updateSegment" class="btn btn-primary btn-sm mr-2" onclick="guestUpdate(' + guestID + ')">Update</button>' +
                         '<button type="button" id="deleteSegment" class="btn btn-sm btn-danger" onclick="guestDelete(' + guestID + ')">Delete</button></div>')
 

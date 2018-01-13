@@ -2,23 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c49b85b-4997-40c6-9970-8bdf9e401680" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/inc/src/ajax.main.contestant.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/inc/src/ajax.update-guest.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/inc/views/createGuest.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/inc/views/createScore.php" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/data_output/contestants.csv" afterPath="$PROJECT_DIR$/data_output/contestants.csv" />
-      <change beforePath="$PROJECT_DIR$/inc/class/contestants.php" afterPath="$PROJECT_DIR$/inc/class/contestants.php" />
-      <change beforePath="$PROJECT_DIR$/inc/class/events.php" afterPath="$PROJECT_DIR$/inc/class/events.php" />
       <change beforePath="$PROJECT_DIR$/inc/js/event_segments.js" afterPath="$PROJECT_DIR$/inc/js/event_segments.js" />
-      <change beforePath="$PROJECT_DIR$/inc/js/events.js" afterPath="$PROJECT_DIR$/inc/js/events.js" />
-      <change beforePath="$PROJECT_DIR$/inc/js/segment_details.js" afterPath="$PROJECT_DIR$/inc/js/segment_details.js" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.create-contestant.php" afterPath="$PROJECT_DIR$/inc/src/ajax.create-contestant.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.get-contestants.php" afterPath="$PROJECT_DIR$/inc/src/ajax.get-contestants.php" />
-      <change beforePath="$PROJECT_DIR$/inc/styles/style.css" afterPath="$PROJECT_DIR$/inc/styles/style.css" />
-      <change beforePath="$PROJECT_DIR$/inc/views/createSegment.php" afterPath="$PROJECT_DIR$/inc/views/createSegment.php" />
-      <change beforePath="$PROJECT_DIR$/inc/views/event-home.php" afterPath="$PROJECT_DIR$/inc/views/event-home.php" />
-      <change beforePath="$PROJECT_DIR$/inc/views/updateSegment.php" afterPath="$PROJECT_DIR$/inc/views/updateSegment.php" />
+      <change beforePath="$PROJECT_DIR$/inc/views/updateSegment.php" afterPath="$PROJECT_DIR$/inc/views/update.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -44,22 +30,30 @@
       <file leaf-file-name="event_segments.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/inc/js/event_segments.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1609">
-              <caret line="246" column="45" lean-forward="true" selection-start-line="246" selection-start-column="45" selection-end-line="246" selection-end-column="45" />
+            <state relative-caret-position="96">
+              <caret line="67" column="38" lean-forward="false" selection-start-line="67" selection-start-column="38" selection-end-line="67" selection-end-column="38" />
               <folding>
                 <element signature="n#!!block;n#segmentList#0" expanded="false" />
                 <element signature="n#!!block;n#loadSegmentCreate#0" expanded="false" />
-                <element signature="n#!!block;n#refreshSegmentList#0" expanded="false" />
-                <element signature="n#!!block;n#createSegment#0" expanded="false" />
-                <element signature="n#!!block;n#segmentUpdate#0" expanded="false" />
+                <element signature="n#!!block;n#loadSegmentUpdate#0" expanded="false" />
+                <element signature="n#!!block;n#segmentDelete#0" expanded="false" />
                 <element signature="n#!!block;n#refreshGuestList#0" expanded="false" />
-                <element signature="n#!!block;n#loadGuestUpdate#0" expanded="false" />
                 <element signature="n#!!block;n#createGuest#0" expanded="false" />
                 <element signature="n#!!block;n#loadGuestCreate#0" expanded="false" />
                 <element signature="n#!!block;n#loadScoreCreate#0" expanded="false" />
                 <element signature="n#!!block;n#guestDelete#0" expanded="false" />
                 <element signature="n#!!block;n#selectGuest#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="createScore.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/inc/views/createScore.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="20" column="92" lean-forward="false" selection-start-line="20" selection-start-column="92" selection-end-line="20" selection-end-column="92" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -76,8 +70,42 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="guests.csv" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/data_output/guests.csv">
+      <file leaf-file-name="contestants.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data_output/contestants.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ajax.main.contestant.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/inc/src/ajax.main.contestant.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="303">
+              <caret line="20" column="6" lean-forward="false" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
+              <folding>
+                <marker date="1515826109151" expanded="true" signature="466:472" ph=" " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ajax.get-contestants.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/inc/src/ajax.get-contestants.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="768">
+              <caret line="32" column="30" lean-forward="true" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
+              <folding>
+                <marker date="1515823320934" expanded="true" signature="1491:1497" ph=" " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="update.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/inc/views/update.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -335,8 +363,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/inc/src" />
       <recent name="$PROJECT_DIR$/inc/views" />
+      <recent name="$PROJECT_DIR$/inc/src" />
       <recent name="$PROJECT_DIR$/inc/modals" />
       <recent name="$PROJECT_DIR$/inc/class" />
       <recent name="$PROJECT_DIR$/inc/js" />
@@ -403,7 +431,7 @@
       <workItem from="1515723222050" duration="249000" />
       <workItem from="1515724165553" duration="623000" />
       <workItem from="1515729116546" duration="29991000" />
-      <workItem from="1515818970017" duration="7906000" />
+      <workItem from="1515818970017" duration="8715000" />
     </task>
     <task id="LOCAL-00001" summary="Add delete function">
       <created>1515720551843</created>
@@ -454,25 +482,33 @@
       <option name="project" value="LOCAL" />
       <updated>1515789724207</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="builds CRUD for guests&#10;partial rename contestant references to guest">
+      <created>1515827174003</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1515827174004</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="295735000" />
+    <option name="totallyTimeSpent" value="296544000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <layout>
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4282353" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39814815" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4282353" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23529412" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.55941254" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -484,7 +520,6 @@
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16041666" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3271028" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23565218" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -535,7 +570,8 @@
     <MESSAGE value="edit behavior on delete jquery" />
     <MESSAGE value="revert edits to footer" />
     <MESSAGE value="finish CRUD and add UX messaging for segment panel" />
-    <option name="LAST_COMMIT_MESSAGE" value="finish CRUD and add UX messaging for segment panel" />
+    <MESSAGE value="builds CRUD for guests&#10;partial rename contestant references to guest" />
+    <option name="LAST_COMMIT_MESSAGE" value="builds CRUD for guests&#10;partial rename contestant references to guest" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -544,20 +580,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ee331dc3-3cb3-4e5c-88cc-7de299c8212a/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inc/class/scorenames.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="802">
-          <caret line="66" column="20" lean-forward="true" selection-start-line="62" selection-start-column="8" selection-end-line="68" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1560">
@@ -632,6 +654,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -745,6 +768,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="287">
           <caret line="19" column="19" lean-forward="false" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -759,6 +783,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="23" column="26" lean-forward="true" selection-start-line="20" selection-start-column="19" selection-end-line="23" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -766,6 +791,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="928">
           <caret line="155" column="0" lean-forward="true" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -780,14 +806,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="9" column="6" lean-forward="true" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inc/views/createScore.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="20" column="92" lean-forward="false" selection-start-line="20" selection-start-column="92" selection-end-line="20" selection-end-column="92" />
           <folding />
         </state>
       </provider>
@@ -845,16 +863,6 @@
           <caret line="21" column="53" lean-forward="true" selection-start-line="21" selection-start-column="53" selection-end-line="21" selection-end-column="53" />
           <folding>
             <marker date="1515401054043" expanded="true" signature="489:495" ph=" " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inc/src/ajax.get-contestants.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="768">
-          <caret line="32" column="30" lean-forward="true" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
-          <folding>
-            <marker date="1515823320934" expanded="true" signature="1491:1497" ph=" " />
           </folding>
         </state>
       </provider>
@@ -917,16 +925,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inc/src/ajax.main.contestant.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="20" column="6" lean-forward="false" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
-          <folding>
-            <marker date="1515826109151" expanded="true" signature="466:472" ph=" " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/inc/class/contestants.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-933">
@@ -952,18 +950,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/inc/views/updateSegment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/views/update.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/inc/js/event_segments.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1609">
-          <caret line="246" column="45" lean-forward="true" selection-start-line="246" selection-start-column="45" selection-end-line="246" selection-end-column="45" />
+        <state relative-caret-position="96">
+          <caret line="67" column="38" lean-forward="false" selection-start-line="67" selection-start-column="38" selection-end-line="67" selection-end-column="38" />
           <folding>
             <element signature="n#!!block;n#segmentList#0" expanded="false" />
             <element signature="n#!!block;n#loadSegmentCreate#0" expanded="false" />
-            <element signature="n#!!block;n#refreshSegmentList#0" expanded="false" />
-            <element signature="n#!!block;n#createSegment#0" expanded="false" />
-            <element signature="n#!!block;n#segmentUpdate#0" expanded="false" />
+            <element signature="n#!!block;n#loadSegmentUpdate#0" expanded="false" />
+            <element signature="n#!!block;n#segmentDelete#0" expanded="false" />
             <element signature="n#!!block;n#refreshGuestList#0" expanded="false" />
-            <element signature="n#!!block;n#loadGuestUpdate#0" expanded="false" />
             <element signature="n#!!block;n#createGuest#0" expanded="false" />
             <element signature="n#!!block;n#loadGuestCreate#0" expanded="false" />
             <element signature="n#!!block;n#loadScoreCreate#0" expanded="false" />
@@ -973,10 +985,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inc/views/updateSegment.php">
+    <entry file="file://$PROJECT_DIR$/inc/views/createScore.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        <state relative-caret-position="480">
+          <caret line="20" column="92" lean-forward="false" selection-start-line="20" selection-start-column="92" selection-end-line="20" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_output/guests.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -991,11 +1011,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_output/guests.csv">
+    <entry file="file://$PROJECT_DIR$/data_output/contestants.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/src/ajax.main.contestant.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="20" column="6" lean-forward="false" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
+          <folding>
+            <marker date="1515826109151" expanded="true" signature="466:472" ph=" " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/src/ajax.get-contestants.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="768">
+          <caret line="32" column="30" lean-forward="true" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
+          <folding>
+            <marker date="1515823320934" expanded="true" signature="1491:1497" ph=" " />
+          </folding>
         </state>
       </provider>
     </entry>
