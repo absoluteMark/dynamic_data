@@ -2,25 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c49b85b-4997-40c6-9970-8bdf9e401680" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/data_output/guests.csv" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/inc/class/guests.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/inc/class/scores.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/inc/src/ajax.create-score.php" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/inc/class/contestants.php" afterPath="$PROJECT_DIR$/inc/class/guests.php" />
-      <change beforePath="$PROJECT_DIR$/inc/class/scorenames.php" afterPath="$PROJECT_DIR$/inc/class/scores.php" />
-      <change beforePath="$PROJECT_DIR$/inc/js/event_segments.js" afterPath="$PROJECT_DIR$/inc/js/event_segments.js" />
-      <change beforePath="$PROJECT_DIR$/inc/js/segment_details.js" afterPath="$PROJECT_DIR$/inc/js/segment_details.js" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.create-contestant.php" afterPath="$PROJECT_DIR$/inc/src/ajax.create-guest.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.create-scorename.php" afterPath="$PROJECT_DIR$/inc/src/ajax.create-score.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.get-contestants.php" afterPath="$PROJECT_DIR$/inc/src/ajax.get-guests.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.get-scorenames.php" afterPath="$PROJECT_DIR$/inc/src/ajax.get-scores.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.main.contestant.php" afterPath="$PROJECT_DIR$/inc/src/ajax.main.guest.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.update-guest.php" afterPath="$PROJECT_DIR$/inc/src/ajax.update-guest.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/dbconfig.php" afterPath="$PROJECT_DIR$/inc/src/dbconfig.php" />
-      <change beforePath="$PROJECT_DIR$/inc/views/createGuest.php" afterPath="$PROJECT_DIR$/inc/views/createGuest.php" />
-      <change beforePath="$PROJECT_DIR$/inc/views/createScore.php" afterPath="$PROJECT_DIR$/inc/views/createScore.php" />
-      <change beforePath="$PROJECT_DIR$/inc/views/update.php" afterPath="$PROJECT_DIR$/inc/views/update.php" />
+      <change beforePath="$PROJECT_DIR$/inc/src/ajax.get-judges.php" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -432,7 +415,7 @@
       <workItem from="1515723222050" duration="249000" />
       <workItem from="1515724165553" duration="623000" />
       <workItem from="1515729116546" duration="29991000" />
-      <workItem from="1515818970017" duration="12719000" />
+      <workItem from="1515818970017" duration="12794000" />
     </task>
     <task id="LOCAL-00001" summary="Add delete function">
       <created>1515720551843</created>
@@ -497,11 +480,18 @@
       <option name="project" value="LOCAL" />
       <updated>1515828055382</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="builds CRUD for guests and scores&#10;rename contestant references to guest&#10;rename scorename references to score">
+      <created>1515832441121</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1515832441121</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="300548000" />
+    <option name="totallyTimeSpent" value="300623000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -515,7 +505,7 @@
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23529412" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23529412" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.55941254" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -579,7 +569,8 @@
     <MESSAGE value="revert edits to footer" />
     <MESSAGE value="finish CRUD and add UX messaging for segment panel" />
     <MESSAGE value="builds CRUD for guests&#10;partial rename contestant references to guest" />
-    <option name="LAST_COMMIT_MESSAGE" value="builds CRUD for guests&#10;partial rename contestant references to guest" />
+    <MESSAGE value="builds CRUD for guests and scores&#10;rename contestant references to guest&#10;rename scorename references to score" />
+    <option name="LAST_COMMIT_MESSAGE" value="builds CRUD for guests and scores&#10;rename contestant references to guest&#10;rename scorename references to score" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -599,6 +590,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1632">
           <caret line="73" column="4" lean-forward="false" selection-start-line="73" selection-start-column="4" selection-end-line="73" selection-end-column="4" />
+          <folding>
+            <marker date="1514786088183" expanded="true" signature="398:555" ph="INSERT INTO users... " />
+            <marker date="1514786088183" expanded="true" signature="1035:1106" ph="SELECT * FRO... users" />
+          </folding>
         </state>
       </provider>
     </entry>
