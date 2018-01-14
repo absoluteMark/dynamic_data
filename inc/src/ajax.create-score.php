@@ -7,7 +7,7 @@ require_once 'dbconfig.php';
 
 if ($_POST['score_name']!="") {
 
-    $score = new SCORES($DB_con);
+    $score = new \App\Scoreboard\ SCORES($DB_con);
 
     //print_r($_POST);
 

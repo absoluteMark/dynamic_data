@@ -7,10 +7,7 @@ require_once 'dbconfig.php';
 
 if ($_POST['event_name']!="") {
 
-    $event = new EVENTS($DB_con);
-
-
-    //$uploadResponse = $event->uploadFile($_POST);
+    $event = new \App\Scoreboard\ EVENTS($DB_con);
 
     $response = $event->add_event($_POST);
 

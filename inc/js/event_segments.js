@@ -8,7 +8,6 @@
 function segmentList() {
 
     var div_target_id = 'segment-list';
-    var div_results_id = 'results-list';
 
 
     $.ajax({
@@ -26,11 +25,8 @@ function segmentList() {
                         console.log(index, val);
                         $('#' + div_target_id).append('<div onclick="if(event.altKey){loadSegmentUpdate(' + val.segment_id + ')}else{refreshGuestList(' + val.segment_id + ')}" id="segment' + val.segment_id + '" class="list-group-item list-group-item-action" data-toggle="list">' + val.start_time + ' - ' + val.segment_name + '</div>');
                     });
-                    $('#' + div_results_id).html('');
-                    $.each(data.segments, function (index, val) {
-                        console.log(index, val);
-                        $('#' + div_results_id).append('<div onclick="enterResults(' + val.segment_id + ')" id="segment' + val.segment_id + '" class="list-group-item list-group-item-action" data-toggle="list">' + val.segment_name + '</div>');
-                    });
+
+                    resultsList();
 
                 } else {
 
@@ -124,9 +120,9 @@ function createSegment() {
 
 
     var data = $("#segment-form").serialize();
-    var errorDiv = $('#errorDiv2');
-    var submitBtn = $('#submitBtn2');
-    var closeBtn = $('#closeBtn2');
+    var errorDiv = $('#errorDiv');
+    var submitBtn = $('#submitBtn');
+    var closeBtn = $('#closeBtn');
 
     //alert(data);
 
@@ -245,7 +241,7 @@ function segmentDelete(segmentID) {
 
     data = data + '&segmentId=' + segmentID;
 
-    var error_div = $('#errorDiv5');
+    var error_div = $('#errorDiv');
     var buttons = $('button');
 
     var answer = confirm("Are you sure ?");
@@ -289,6 +285,7 @@ function segmentDelete(segmentID) {
 
                 setTimeout(function () {
                     refreshSegmentList();
+                    clearGuestList();
 
                 }, 500);
 
@@ -312,6 +309,12 @@ function segmentDelete(segmentID) {
  *
  * @param segmentID,contestantID
  */
+
+function clearGuestList(){
+
+    $('#guest-list').html("");
+
+}
 
 function refreshGuestList(segmentID) {
 
@@ -404,7 +407,7 @@ function loadGuestUpdate(guestID,segmentID) {
             alert('Error !')
         }
 
-    })
+    });
 
 
 
@@ -412,9 +415,9 @@ function loadGuestUpdate(guestID,segmentID) {
 
 function createGuest(segmentID) {
 
-    var errorDiv = $('#errorDiv3');
-    var submitBtn = $('#submitBtn3');
-    var closeBtn = $('#closeBtn3');
+    var errorDiv = $('#errorDiv');
+    var submitBtn = $('#submitBtn');
+    var closeBtn = $('#closeBtn');
     var form = $('#guest-form');
 
     var data = $(form).serialize();
@@ -557,7 +560,67 @@ function guestUpdate(guestID,segmentID) {
 
 function guestDelete(guestID,segmentID) {
 
+    var data = $("#update-form").serialize();
 
+    data = data + '&guestId=' + guestID;
+
+    var error_div = $('#errorDiv');
+    var buttons = $('button');
+
+    var answer = confirm("Are you sure ?");
+
+    if (answer === true) {
+
+
+        $.ajax({
+
+            type: 'POST',
+            async: true,
+            url: 'inc/src/ajax.delete-guest.php',
+            data: data,
+            dataType: 'json',
+            success: function (data) {
+
+                console.log(data);
+
+
+                $(buttons).attr('disabled', 'disabled');
+
+                $(error_div).html('<div class="alert alert-warning">Purging data ...</div>').slideDown(200).delay(500);
+
+
+                if (data.status === 'success') {
+
+                    $(error_div).show(200, function () {
+                        $(error_div).html('<div class="alert alert-success">' + data.message + '</div>')
+                            .delay(500).slideUp(100);
+
+                    });
+
+                } else {
+                    $(error_div).show(200, function () {
+                        $(error_div).html('<div class="alert alert-danger">' + data.message + '</div>')
+                            .delay(500).slideUp(100);
+                    });
+                }
+
+                $(buttons).removeAttr('disabled');
+
+                setTimeout(function () {
+                    refreshGuestList(segmentID);
+                    loadSegmentUpdate(segmentID);
+
+                }, 500);
+
+
+            },
+            error: function () {
+                alert('Error !')
+            }
+        });
+
+
+    }
 
 }
 
@@ -813,6 +876,65 @@ function scoreUpdate(scoreID,segmentID){
 
 function scoreDelete(scoreID,segmentID){
 
+    var data = $("#update-form").serialize();
 
+    data = data + '&scoreId=' + scoreID;
+
+    var error_div = $('#errorDiv');
+    var buttons = $('button');
+
+    var answer = confirm("Are you sure ?");
+
+    if (answer === true) {
+
+
+        $.ajax({
+
+            type: 'POST',
+            async: true,
+            url: 'inc/src/ajax.delete-score.php',
+            data: data,
+            dataType: 'json',
+            success: function (data) {
+
+                console.log(data);
+
+
+                $(buttons).attr('disabled', 'disabled');
+
+                $(error_div).html('<div class="alert alert-warning">Purging data ...</div>').slideDown(200).delay(500);
+
+
+                if (data.status === 'success') {
+
+                    $(error_div).show(200, function () {
+                        $(error_div).html('<div class="alert alert-success">' + data.message + '</div>')
+                            .delay(500).slideUp(100);
+
+                    });
+
+                } else {
+                    $(error_div).show(200, function () {
+                        $(error_div).html('<div class="alert alert-danger">' + data.message + '</div>')
+                            .delay(500).slideUp(100);
+                    });
+                }
+
+                $(buttons).removeAttr('disabled');
+
+                setTimeout(function () {
+                    refreshScoreList(segmentID);
+
+                }, 500);
+
+
+            },
+            error: function () {
+                alert('Error !')
+            }
+        });
+
+
+    }
 
 }

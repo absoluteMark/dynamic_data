@@ -6,6 +6,7 @@
  * Time: 10:35 AM
  */
 
+
 session_start();
 
 define('INC_PATH',dirname(__DIR__)."/");
@@ -36,4 +37,4 @@ include_once INC_PATH.'class/judges.php';
 include_once INC_PATH.'class/results.php';
 
 
-$user = new USER($DB_con);
+$user = new \App\Scoreboard\USER($DB_con);

@@ -7,7 +7,7 @@ require_once 'dbconfig.php';
 
 if ($_POST != "") {
 
-    $guest = new GUESTS($DB_con);
+    $guest = new \App\Scoreboard\ GUESTS($DB_con);
 
     //print_r($_POST);
 

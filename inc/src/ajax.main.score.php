@@ -16,7 +16,7 @@ require_once 'dbconfig.php';
 
 if ($_POST['scoreId']) {
 
-    $score = new SCORES($DB_con);
+    $score = new \App\Scoreboard\ SCORES($DB_con);
 
     //print_r($_POST);
 

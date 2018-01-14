@@ -8,7 +8,7 @@ if ($_POST['segmentID']) {
 
     $_SESSION['segmentID'] = $_POST['segmentID'];
     $segmentID = $_POST['segmentID'];
-    $guest = new GUESTS($DB_con);
+    $guest = new \App\Scoreboard\ GUESTS($DB_con);
 
     $response = $guest->getGuests($segmentID);
 

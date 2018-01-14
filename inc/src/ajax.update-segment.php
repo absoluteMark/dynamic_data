@@ -7,7 +7,7 @@ require_once 'dbconfig.php';
 
 if ($_POST != "") {
 
-    $segment = new SEGMENTS($DB_con);
+    $segment = new \App\Scoreboard\ SEGMENTS($DB_con);
 
     //print_r($_POST);
 

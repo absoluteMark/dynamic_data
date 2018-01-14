@@ -63,7 +63,6 @@ session_start();
 
         <div class="card-body" id="results-body">
 
-
             <div class="list-group" id="results-list">
 
             </div>

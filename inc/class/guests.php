@@ -13,8 +13,17 @@
  *
  */
 
+namespace App\Scoreboard;
+
+use \PDO;  // <--- need by PhpStorm to find Methods of PDO
+
 class GUESTS
 {
+
+    /**
+     * @var PDO   <--- need by PhpStorm to find Methods of PDO
+     */
+
     private $db;
 
     function __construct($DB_con)

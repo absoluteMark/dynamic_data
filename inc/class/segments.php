@@ -6,8 +6,16 @@
  * Time: 7:40 PM
  */
 
+namespace App\Scoreboard;
+
+use \PDO;  // <--- need by PhpStorm to find Methods of PDO
+
 class SEGMENTS
 {
+    /**
+     * @var PDO   <--- need by PhpStorm to find Methods of PDO
+     */
+
     private $db;
 
     function __construct($DB_con)
@@ -95,7 +103,7 @@ class SEGMENTS
         $stmt->bindParam(':start_time', $start_time);
         $res = $stmt->execute();
 
-        $response['events'] = $res;
+        $response['added'] = $res;
 
         // check for successful creation
         if ($stmt->rowCount() == 1) {

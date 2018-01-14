@@ -7,7 +7,7 @@ require_once 'dbconfig.php';
 
 if ($_GET['name']) {
 
-    $event = new EVENTS($DB_con);
+    $event = new \App\Scoreboard\ EVENTS($DB_con);
 
     $name = $_GET['name'];
 

@@ -11,15 +11,14 @@ if ($_POST != "") {
 
     $result = new \App\Scoreboard\ RESULTS($DB_con);
 
-    $response = $result->insertResults($_POST);
-
+    $response = $result->getScoresbySeg($_POST['guestId'],$_POST['segmentId']);
 
 
 }
 else {
     $response = array();
     $response['status'] = 'error'; // could not create record
-    $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; Must have a name !';
+    $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; Nothing posted !';
 }
 
 

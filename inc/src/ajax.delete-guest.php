@@ -7,9 +7,9 @@ require_once 'dbconfig.php';
 
 if ($_POST != "") {
 
-    $segment = new \App\Scoreboard\ SEGMENTS($DB_con);
+    $guest = new \App\Scoreboard\ GUESTS($DB_con);
 
-    $response = $segment->deleteSegment($_POST['segmentId']);
+    $response = $guest->deleteGuest($_POST['guestId']);
 
 
 }

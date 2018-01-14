@@ -5,12 +5,12 @@ header('Content-type: application/json');
 require_once 'dbconfig.php';
 
 
-if ($_GET['contestantId']) {
+if ($_POST['guestId']) {
 
-    $result = new RESULTS($DB_con);
-    $_SESSION['contestant_id'] = $_GET['contestantId'];
-    $contestantId = $_GET['contestantId'];
-    $response = $result->getResultDetails($contestantId);
+    $result = new \App\Scoreboard\ RESULTS($DB_con);
+
+    $guestId = $_POST['guestId'];
+    $response = $result->getResultDetails($guestId);
 
     //Output to csv file section
     //For multi-value records, first line key fields, second line key values
@@ -21,15 +21,13 @@ if ($_GET['contestantId']) {
         foreach ($response['results'][$keys[$i]] as $key => $value) {
             if ($key == "score_result") {
                 $fields = $fields . "sr_" . $i . ",";
-            } elseif ($key == "scorename_name") {
+            } elseif ($key == "score_name") {
                 $fields = $fields . "sn_" . $i . ",";
-            } elseif ($key == "result_id") {
-                $fields = $fields . "rid_" . $i . ",";
             }
         }
     }
-    $fields = $fields . "total" . ",";
-    $fields = $fields . "average" . ",";
+    $fields = $fields . "sum" . ",";
+    $fields = $fields . "av" . ",";
     $fields = $fields . "cn" . ",";
     $fields = $fields . "hn" . ",";
     $fields = $fields . "en" . ",";
@@ -41,7 +39,7 @@ if ($_GET['contestantId']) {
     $average = 0;
     $count = 0;
 
-    $cn = $response['results'][0]['contestant_name'];
+    $cn = $response['results'][0]['guest_name'];
     $hn = $response['results'][0]['horse_name'];
     $en = $response['results'][0]['event_name'];
     $sgn = $response['results'][0]['segment_name'];
@@ -54,9 +52,7 @@ if ($_GET['contestantId']) {
                 $total = $total + $value;
                 $count = $count + 1;
                 $average = round($total / $count,3);
-            } elseif ($key == "scorename_name") {
-                $values = $values . $value . ",";
-            } elseif ($key == "result_id") {
+            } elseif ($key == "score_name") {
                 $values = $values . $value . ",";
             }
         }
@@ -69,7 +65,7 @@ if ($_GET['contestantId']) {
     $values = $values . $sgn . ",";
     $values = $values . "end";
 
-    $my_file = 'results.csv';
+    $my_file = 'single_result.csv';
     $this_dir = dirname(__FILE__);
     $parent_dir = realpath($this_dir . '/..');
     $grandparent_dir = realpath($parent_dir . '/..');

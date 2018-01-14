@@ -4,12 +4,14 @@ header('Content-type: application/json');
 
 require_once 'dbconfig.php';
 
+if ($_POST['segmentId']) {
 
-if ($_POST) {
 
-    $event = new \App\Scoreboard\ EVENTS($DB_con);
+    $segmentID = $_POST['segmentId'];
+    $results = new \App\Scoreboard\ RESULTS($DB_con);
 
-    $response = $event->get_all_events();
+    $response = $results->getAvByName($segmentID);
+
 
 } else {
     $response = array();

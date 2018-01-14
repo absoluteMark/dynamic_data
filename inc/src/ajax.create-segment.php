@@ -7,7 +7,7 @@ require_once 'dbconfig.php';
 
 if ($_POST['segment_name']!="") {
 
-    $segment = new SEGMENTS($DB_con);
+    $segment = new \App\Scoreboard\ SEGMENTS($DB_con);
 
     $segment_name = $_POST['segment_name'];
     $event_id = $_SESSION['event_id'];
@@ -19,7 +19,7 @@ if ($_POST['segment_name']!="") {
 else {
     $response = array();
     $response['status'] = 'error'; // could not create record
-    $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; Error !';
+    $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; Must have a name !';
 }
 
 

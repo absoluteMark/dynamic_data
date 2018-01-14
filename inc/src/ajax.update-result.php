@@ -7,10 +7,9 @@ require_once 'dbconfig.php';
 
 if ($_POST != "") {
 
+    //print_r($_POST);
 
-
-
-    $result = new RESULTS($DB_con);
+    $result = new \App\Scoreboard\ RESULTS($DB_con);
 
     $response = $result->updateResults($_POST);
 

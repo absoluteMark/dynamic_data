@@ -19,10 +19,10 @@ session_start();
     </div>
 </form>
 <div class="d-flex justify-content-around">
-    <button type="button" id="closeBtn2" class="btn btn-secondary" onclick="refreshSegmentList()">Back</button>
-    <button type="button" id="submitBtn2" class="btn btn-primary" onclick="createSegment()">Submit</button>
+    <button type="button" id="closeBtn" class="btn btn-secondary" onclick="refreshSegmentList()">Back</button>
+    <button type="button" id="submitBtn" class="btn btn-primary" onclick="createSegment()">Submit</button>
 </div>
 
-<div id="errorDiv2" class="mt-4"></div>
+<div id="errorDiv" class="mt-4"></div>
 
 

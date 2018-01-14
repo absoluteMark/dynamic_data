@@ -27,6 +27,6 @@ session_start();
 
 </div>
 
-<div id="errorDiv3" class="mt-4"></div>
+<div id="errorDiv" class="mt-4"></div>
 
 
