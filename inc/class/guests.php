@@ -60,8 +60,6 @@ class GUESTS
         $response['guests'] = $res;
 
 
-        //print_r($res);
-
         // check for success
         if ($stmt->rowCount() >= 1) {
 

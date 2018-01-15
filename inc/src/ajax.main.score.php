@@ -33,4 +33,4 @@ if ($_POST['scoreId']) {
 echo json_encode($response);
 
 
-?>
+

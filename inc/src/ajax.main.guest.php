@@ -70,4 +70,4 @@ if ($_POST['guestId']) {
 echo json_encode($response);
 
 
-?>
+

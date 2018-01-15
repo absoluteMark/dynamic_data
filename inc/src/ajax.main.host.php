@@ -69,4 +69,4 @@ if ($_POST['hostId']) {
 echo json_encode($response);
 
 
-?>
+

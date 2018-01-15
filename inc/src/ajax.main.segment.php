@@ -30,4 +30,4 @@ if ($_GET['segmentId']) {
 echo json_encode($response);
 
 
-?>
+
