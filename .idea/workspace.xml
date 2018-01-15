@@ -1,36 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6c49b85b-4997-40c6-9970-8bdf9e401680" name="Default" comment="adds HOST crud and functions">
-      <change beforePath="" afterPath="$PROJECT_DIR$/data_output/hosts.csv" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/data_output/results_table.csv" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/data_output/single_guest.csv" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/data_output/single_host.csv" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/inc/class/hosts.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/inc/src/ajax.create-host.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/inc/src/ajax.delete-host.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/inc/src/ajax.get-hosts.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/inc/src/ajax.main.host.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/inc/src/ajax.update-host.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/inc/views/createHost.php" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ee331dc3-3cb3-4e5c-88cc-7de299c8212a.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/ee331dc3-3cb3-4e5c-88cc-7de299c8212a.xml" />
+    <list default="true" id="6c49b85b-4997-40c6-9970-8bdf9e401680" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/data_output/contestants.csv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/data_output/guests.csv" afterPath="$PROJECT_DIR$/data_output/guests.csv" />
-      <change beforePath="$PROJECT_DIR$/data_output/results.csv" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/inc/class/guests.php" afterPath="$PROJECT_DIR$/inc/class/guests.php" />
-      <change beforePath="$PROJECT_DIR$/inc/class/results.php" afterPath="$PROJECT_DIR$/inc/class/results.php" />
-      <change beforePath="$PROJECT_DIR$/inc/class/segments.php" afterPath="$PROJECT_DIR$/inc/class/segments.php" />
-      <change beforePath="$PROJECT_DIR$/inc/js/event_segments.js" afterPath="$PROJECT_DIR$/inc/js/event_segments.js" />
-      <change beforePath="$PROJECT_DIR$/inc/js/events.js" afterPath="$PROJECT_DIR$/inc/js/events.js" />
-      <change beforePath="$PROJECT_DIR$/inc/js/segment_details.js" afterPath="$PROJECT_DIR$/inc/js/segment_details.js" />
-      <change beforePath="$PROJECT_DIR$/inc/modals/modal.create-event.php" afterPath="$PROJECT_DIR$/inc/modals/modal.create-event.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.get-guest-results.php" afterPath="$PROJECT_DIR$/inc/src/ajax.get-guest-results.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.get-guests.php" afterPath="$PROJECT_DIR$/inc/src/ajax.get-guests.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.main.guest.php" afterPath="$PROJECT_DIR$/inc/src/ajax.main.guest.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.update-guest.php" afterPath="$PROJECT_DIR$/inc/src/ajax.update-guest.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/dbconfig.php" afterPath="$PROJECT_DIR$/inc/src/dbconfig.php" />
-      <change beforePath="$PROJECT_DIR$/inc/views/event-home.php" afterPath="$PROJECT_DIR$/inc/views/event-home.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -375,46 +347,6 @@
               <item name="dynamic_data" type="b2602c69:ProjectViewProjectNode" />
               <item name="dynamic_data" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
-            <path>
-              <item name="dynamic_data" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dynamic_data" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="data_output" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="dynamic_data" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dynamic_data" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="inc" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="dynamic_data" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dynamic_data" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="inc" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="class" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="dynamic_data" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dynamic_data" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="inc" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="dynamic_data" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dynamic_data" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="inc" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="modals" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="dynamic_data" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dynamic_data" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="inc" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="dynamic_data" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dynamic_data" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="inc" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -505,7 +437,7 @@
       <workItem from="1515724165553" duration="623000" />
       <workItem from="1515729116546" duration="29991000" />
       <workItem from="1515818970017" duration="13431000" />
-      <workItem from="1515833115606" duration="80953000" />
+      <workItem from="1515833115606" duration="80968000" />
     </task>
     <task id="LOCAL-00001" summary="Add delete function">
       <created>1515720551843</created>
@@ -612,15 +544,21 @@
       <option name="project" value="LOCAL" />
       <updated>1515977837297</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="adds HOST crud and functions">
+      <created>1515996603004</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1515996603004</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="382213000" />
+    <option name="totallyTimeSpent" value="382228000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2882353" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -629,7 +567,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4282353" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298611" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23529412" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
