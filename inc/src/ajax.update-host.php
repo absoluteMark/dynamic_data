@@ -7,11 +7,16 @@ require_once 'dbconfig.php';
 
 if ($_POST != "") {
 
-    $guest = new \App\Scoreboard\ GUESTS($DB_con);
+    $host = new \App\Scoreboard\ HOSTS($DB_con);
 
     //print_r($_POST);
 
-    $response = $guest->updateGuest($_POST);
+    $name = $_POST['Host_Name'];
+    $horse = $_POST['Horse'];//note should be the jQuery passed variable
+    $subtitle = $_POST['Subtitle'];
+    $id = $_POST['hostId'];
+
+    $response = $host->updateHost($name,$horse,$subtitle,$id);
 
 
 

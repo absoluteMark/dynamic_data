@@ -1,3 +1,13 @@
+/**
+ *
+ * jQuery stuff
+ *
+ * Results Panel CRUD views and AJAX requests
+ *
+ * Client side of things
+ *
+ */
+
 function enterResults(segmentID) {
 
     $.get("inc/views/results.list.php", function (view) { //important
@@ -52,7 +62,25 @@ function enterResults(segmentID) {
 
 function selectResult (guestID){
 
+    var data = [];
+    data = data + '&guestId=' + guestID;
 
+    $.ajax({
+
+        type: 'POST',
+        async: true,
+        url: 'inc/src/ajax.main.results.php',
+        data: data,
+        dataType: 'json',
+        success: function (data) {
+            console.log(data);
+            alert('Selected');
+
+        },
+        error: function () {
+            alert('Error !')
+        }
+    });
 
 }
 
@@ -163,6 +191,8 @@ function loadResultsCreate (guestID, segmentID) {
 function createResult(guestID,segmentID) {
 
     var data = $("#results-update-form").serialize();
+    data = data + '&segmentId=' + segmentID;
+    data = data + '&guestId=' + guestID;
 
     var errorDiv = $('#resultsErrorDiv');
     var updateBtn = $('#updateBtnResults');
@@ -375,7 +405,7 @@ function getResultsTable(segmentID) {
                 $.get("inc/views/results.table.php", function (view) {
                     $('#results-body').html(view);
                     $("#results-title").html("No Results");
-                    $('#resultsAlert').append('<div class="small text-right" id="hint">No Results Exist</div>');
+                    $('#results-alert').append('<div class="small text-right" id="hint">No Results Exist</div>');
                     $('#a-link').append('<a class=\"nav-link\" href=\"#\" onclick="enterResults(' + segmentID + ')">Update Results</a>');
                     $('#resultsBtns').append('<button type="button" id="cancelBtnResults" class="btn btn-secondary btn-sm mr-2" ' +
                         'onclick="resultsList()">Back</button>');

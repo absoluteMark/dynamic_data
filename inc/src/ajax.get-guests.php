@@ -19,18 +19,41 @@ if ($_POST['segmentID']) {
     $fields = "";
     for ($i = 0; $i < count($response['guests']); $i++) {
         foreach ($response['guests'][$keys[$i]] as $key => $value) {
-            $fields = $fields . $key . "_" . $i . ",";
+            if ($key == "gn"){
+                $fields = $fields . $key . "_" . $i . ",";
+            } elseif ($key == "hn") {
+                $fields = $fields . $key . "_" . $i . ",";
+            }
         }
     }
+
+    $fields = $fields . "en" . ",";
+    $fields = $fields . "loc" . ",";
+    $fields = $fields . "sgn" . ",";
     $fields = $fields . "end" . PHP_EOL;
 
     $values = "";
+
+    $en = $response['guests'][0]['en'];
+    $loc = $response['guests'][0]['loc'];
+    $sgn = $response['guests'][0]['sgn'];
+
     for ($i = 0; $i < count($response['guests']); $i++) {
         foreach ($response['guests'][$keys[$i]] as $key => $value) {
-            $values = $values . $value . ",";
+            if ($key == "gn"){
+                $values = $values . $value . ",";
+            } elseif ($key == "hn") {
+                $values = $values . $value . ",";
+            }
+
         }
     }
+    $values = $values . $en . ",";
+    $values = $values . $loc . ",";
+    $values = $values . $sgn . ",";
     $values = $values . "end";
+
+
 
     $my_file = 'guests.csv';
     $this_dir = dirname(__FILE__);

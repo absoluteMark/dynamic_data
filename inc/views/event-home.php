@@ -49,6 +49,7 @@ session_start();
         <div class="card-header" id="host-header">
 
             <h3 class="text-right" id="host-title">Hosts</h3>
+            <button type="button" class="btn btn-warning btn-sm float-right" id="host-button">Add</button>
         </div>
 
         <div class="card-body" id="host-body" style="height: 250px;">

@@ -1,6 +1,6 @@
 /**
  *
- * Segment CRUD functions
+ * Segment Panel CRUD views and AJAX requests
  *
  *
  */
@@ -18,6 +18,9 @@ function segmentList() {
         cache: false,
         success: function (data) {
 
+            var eventID = data.segments[0]['event_id'];
+            //alert(eventID);
+
             setTimeout(function () {
                 if (data.status === 'success') {
                     $('#' + div_target_id).html('');
@@ -27,6 +30,7 @@ function segmentList() {
                     });
 
                     resultsList();
+                    refreshHostList(eventID);
 
                 } else {
 
@@ -311,7 +315,7 @@ function segmentDelete(segmentID) {
 /**
  *
  *
- * Guest CRUD functions
+ * Guest Panel CRUD views and AJAX requests
  *
  *
  */
@@ -633,12 +637,32 @@ function guestDelete(guestID,segmentID) {
 
 function selectGuest(guestID) {
 
+    var data = [];
+    data = data + '&guestId=' + guestID;
+
+    $.ajax({
+
+        type: 'POST',
+        async: true,
+        url: 'inc/src/ajax.main.guest.php',
+        data: data,
+        dataType: 'json',
+        success: function (data) {
+            console.log(data);
+            alert('Selected');
+
+        },
+        error: function () {
+            alert('Error !')
+        }
+    });
+
 
 }
 
 /**
  *
- * Score CRUD functions
+ * Score Panel CRUD views and AJAX requests
  *
  *
  */
@@ -932,6 +956,7 @@ function scoreDelete(scoreID,segmentID){
 
                 setTimeout(function () {
                     refreshScoreList(segmentID);
+                    loadSegmentUpdate(segmentID);
 
                 }, 500);
 
@@ -946,3 +971,361 @@ function scoreDelete(scoreID,segmentID){
     }
 
 }
+
+/**
+ *
+ *
+ * Host Panel CRUD and AJAX requests
+ *
+ *
+ */
+
+function refreshHostList(eventID) {
+
+    /**
+     *
+     * Loads a list-group into the HOST panel
+     *
+     *
+     * ajax post
+     *
+     */
+
+    var div_target_id = 'host-list';
+
+    $('#host-title').html('Hosts');
+    $('#host-alert').css('visibility','visible');
+    $('#host-button').attr('onclick','loadHostCreate(' + eventID + ');');
+
+
+    $.ajax({
+        type: 'POST',
+        url: 'inc/src/ajax.get-hosts.php',
+        data: {eventId: eventID},
+        dataType: 'json',
+        cache: false,
+        success: function (data) {
+
+            console.log(data);
+
+            //alert("Status: " + data.status + "\nMessage: " + data.message);
+
+            setTimeout(function () {
+                if (data.status === 'success') {
+                    $('#' + div_target_id).html('');
+                    $.each(data.hosts, function (index, val) {
+                        console.log(index, val);
+                        $('#' + div_target_id).append('<div onclick="if(event.altKey)' +
+                            '{loadHostUpdate(' + val.hId + ',' + eventID +')' +
+                            '}else{selectHost(' + val.hId + ')}" ' +
+                            'id="host' + val.hId + '" id="host' + val.hId + '" ' +
+                            'class="list-group-item list-group-item-action" ' +
+                            'data-toggle="list">' + val.n + '</div>');
+                    });
+
+                } else {
+
+                    $('#' + div_target_id).slideDown(200, function () {
+                        $('#' + div_target_id).html('<div class="alert alert-danger">' + data.message + '</div>')
+
+                    });
+                }
+            }, 500);
+        },
+        error: function () {
+            alert('Error !')
+        }
+
+
+    });
+
+}
+
+function loadHostUpdate(hostID,eventID) {
+
+    var form_target_id = "update-form";
+
+    $.ajax({
+        type: 'POST',
+        url: 'inc/src/ajax.main.host.php',
+        data: {hostId: hostID},
+        dataType: 'json',
+        cache: false,
+        success: function (data) {
+
+            //alert("Status: " + data.status + "\nMessage: " + data.message);
+
+            if (data.status === 'success') {
+                $.get("inc/views/update.php", function (view) {
+                    $('#segment-body').html(view);
+                    $('#mode').html('Edit Mode').toggleClass('text-danger text-primary');
+                    $('#segment-title').html('Update Host');
+
+                    $('#alert').append('<div class="small text-right" id="hint">Update the Host Details</div>');
+
+
+                    $.each(data.host, function (index, val) {
+                        console.log(index, val);
+                        var html = '<div class="form-group">\n' +
+                            '<label for="' + val + '">' + index + '</label>\n' +
+                            '<input type="text" class="form-control" name="' + index + '" id="' + index + '" value="' + val + '">\n' +
+                            '</div>';
+                        $('#' + form_target_id).append(html);
+                    });
+
+                    $('#guest-link').append('<a class=\"nav-link\" href=\"#\" onclick=\"loadHostCreate(' + eventID + ')\">Add Host</a>');
+
+                    $('#' + form_target_id).append('<div class="d-flex justify-content-around">' +
+                        '<button type="button" id="cancelBtn" class="btn btn-secondary btn-sm mr-2" onclick="refreshSegmentList()">Back</button>' +
+                        '<button type="button" id="updateBtn" class="btn btn-primary btn-sm mr-2" onclick="hostUpdate(' + hostID + ',' + eventID + ')">Update</button>' +
+                        '<button type="button" id="deleteBtn" class="btn btn-sm btn-danger" onclick="hostDelete(' + hostID + ',' + eventID + ')">Delete</button></div>')
+
+                })
+            }
+        },
+        error: function () {
+            alert('Error !')
+        }
+
+    })
+
+
+}
+
+function loadHostCreate(eventID) {
+
+    $.get("inc/views/createHost.php", function (view) {
+        $('#segment-body').html(view);
+        // load a form view into the Segment Panel
+        $('#mode').html('Edit Mode').toggleClass('text-danger text-primary');
+        $('#segment-title').html('Create Host');//change title of Segment Panel
+
+        var buttons = $('#host-buttons'); //a div that holds the custom buttons
+
+        $(buttons).append('<button type=\"button\" id=\"closeBtn\" class=\"btn btn-secondary\" ' +
+            'onclick=\"refreshSegmentList()\">Back</button>');
+        // a back link to load the top view
+
+        $(buttons).append('<button type=\"button\" id=\"submitBtn\" class=\"btn btn-primary\" ' +
+            'onclick=\"createHost(' + eventID + ')\">Submit</button>');
+
+    });
+
+    refreshHostList(eventID);
+
+}
+
+function createHost(eventID) {
+
+    var errorDiv = $('#errorDiv');
+    var submitBtn = $('#submitBtn');
+    var closeBtn = $('#closeBtn');
+    var form = $('#host-form');//important
+
+    var data = $(form).serialize();
+    data = data + '&eventId=' + eventID;
+
+    //alert(data);
+
+    $.ajax({
+
+        type: 'POST',
+        async: true,
+        url: 'inc/src/ajax.create-host.php',
+        data: data,
+        dataType: 'json',
+        success: function (data) {
+
+            console.log(data);
+
+            $(submitBtn).attr('disabled', 'disabled');
+            $(closeBtn).attr('disabled', 'disabled');
+            $(errorDiv).html('<div class="alert alert-info">Processing ...</div>');
+            $(errorDiv).slideDown(200).delay(200);
+
+
+            setTimeout(function () {
+
+                if (data.status === 'success') {
+
+                    $(errorDiv).show(200, function () {
+                        $(errorDiv).html('<div class="alert alert-success">' + data.message + '</div>')
+                            .delay(3000).slideUp(100);
+                        $(form)[0].reset();
+
+                    });
+                } else {
+                    $(errorDiv).show(200, function () {
+                        $(errorDiv).html('<div class="alert alert-danger">' + data.message + '</div>')
+                            .delay(3000).slideUp(100);
+                    });
+                }
+
+                $(submitBtn).html('Create Another ?').removeAttr('disabled');
+                $(closeBtn).removeAttr('disabled');
+
+
+            }, 500);
+        },
+        error: function () {
+            alert('Error !')
+        }
+    });
+
+    refreshHostList(eventID);
+
+}
+
+function hostUpdate(hostID,eventID){
+
+    var data = $("#update-form").serialize();
+    data = data + '&hostId=' + hostID;
+
+    var errorDiv = $('#errorDiv');
+    var updateBtn = $('#updateBtn');
+    var backBtn = $('#cancelBtn');
+    var deleteBtn = $('#deleteBtn');
+
+    //alert(data);
+
+    $.ajax({
+
+        type: 'POST',
+        async: true,
+        url: 'inc/src/ajax.update-host.php',
+        data: data,
+        dataType: 'json',
+        success: function (data) {
+
+            console.log(data);
+
+
+            $(updateBtn).attr('disabled', 'disabled');
+            $(backBtn).attr('disabled', 'disabled');
+            $(deleteBtn).attr('disabled', 'disabled');
+            $(errorDiv).html('<div class="alert alert-info">Attempting update ...</div>');
+            $(errorDiv).slideDown(200).delay(200);
+
+            setTimeout(function () {
+
+                if (data.status === 'success') {
+
+                    $(errorDiv).show(200, function () {
+                        $(errorDiv).html('<div class="alert alert-success">' + data.message + '</div>')
+                            .delay(3000).slideUp(100);
+
+                    });
+                } else {
+                    $(errorDiv).show(200, function () {
+                        $(errorDiv).html('<div class="alert alert-danger">' + data.message + '</div>')
+                            .delay(3000).slideUp(100);
+                    });
+                }
+
+                $(updateBtn).html('Update').removeAttr('disabled');
+                $(backBtn).removeAttr('disabled');
+                $(deleteBtn).removeAttr('disabled');
+
+            }, 1500);
+        },
+        error: function () {
+            alert('Error !')
+        }
+    });
+
+    refreshHostList(eventID);
+
+}
+
+function hostDelete(hostID,eventID){
+
+    var data = $("#update-form").serialize();
+
+    data = data + '&hostId=' + hostID;
+
+    var error_div = $('#errorDiv');
+    var buttons = $('button');
+
+    var answer = confirm("Are you sure ?");
+
+    if (answer === true) {
+
+
+        $.ajax({
+
+            type: 'POST',
+            async: true,
+            url: 'inc/src/ajax.delete-host.php',
+            data: data,
+            dataType: 'json',
+            success: function (data) {
+
+                console.log(data);
+
+
+                $(buttons).attr('disabled', 'disabled');
+
+                $(error_div).html('<div class="alert alert-warning">Purging data ...</div>').slideDown(200).delay(500);
+
+
+                if (data.status === 'success') {
+
+                    $(error_div).show(200, function () {
+                        $(error_div).html('<div class="alert alert-success">' + data.message + '</div>')
+                            .delay(500).slideUp(100);
+
+                    });
+
+                } else {
+                    $(error_div).show(200, function () {
+                        $(error_div).html('<div class="alert alert-danger">' + data.message + '</div>')
+                            .delay(500).slideUp(100);
+                    });
+                }
+
+                $(buttons).removeAttr('disabled');
+
+                setTimeout(function () {
+                    refreshHostList(eventID);
+                    refreshSegmentList();
+
+                }, 500);
+
+
+            },
+            error: function () {
+                alert('Error !')
+            }
+        });
+
+
+    }
+
+}
+
+function selectHost(hostID) {
+
+    var data = [];
+    data = data + '&hostId=' + hostID;
+
+    $.ajax({
+
+        type: 'POST',
+        async: true,
+        url: 'inc/src/ajax.main.host.php',
+        data: data,
+        dataType: 'json',
+        success: function (data) {
+            console.log(data);
+            alert('Selected');
+
+        },
+        error: function () {
+            alert('Error !')
+        }
+    });
+
+
+}
+
+

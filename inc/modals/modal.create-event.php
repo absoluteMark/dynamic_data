@@ -22,7 +22,7 @@
             <div id="errorDiv1"></div>
             </div>
             <div class="modal-footer">
-                <button type="button" id="closeBtn1" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" id="closeBtn1" class="btn btn-secondary" data-dismiss="modal" onclick="reload()">Close</button>
                 <button type="button" id="submitBtn1" class="btn btn-primary" onclick="submitEvent()">Create New Event</button>
             </div>
         </div>

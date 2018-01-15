@@ -14,19 +14,16 @@ header('Content-type: application/json');
 
 require_once 'dbconfig.php';
 
-if ($_POST['guestId']) {
+if ($_POST['hostId']) {
 
-    $guest = new \App\Scoreboard\ GUESTS($DB_con);
+    $host = new \App\Scoreboard\ HOSTS($DB_con);
 
     //print_r($_POST);
 
-    $guestId = $_POST['guestId'];
+    $hostID = $_POST['hostId'];
 
-    $response = $guest->guest_detail($guestId);
+    $response = $host->host_detail($hostID);
 
-
-    //Output to csv file section
-    //For multi-value records, first line fields
 
     $keys = array_keys($response['full-details']);
 
@@ -48,7 +45,7 @@ if ($_POST['guestId']) {
     $values = $values . "end";
 
 
-    $my_file = 'single_guest.csv';
+    $my_file = 'single_host.csv';
     $this_dir = dirname(__FILE__);
     $parent_dir = realpath($this_dir . '/..');
     $grandparent_dir = realpath($parent_dir . '/..');
@@ -59,6 +56,8 @@ if ($_POST['guestId']) {
     fclose($handle);
 
     //End of Output to CSV Section
+
+
 
 
 } else {

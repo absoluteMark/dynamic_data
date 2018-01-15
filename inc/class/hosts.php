@@ -17,7 +17,7 @@ namespace App\Scoreboard;
 
 use \PDO;  // <--- need by PhpStorm to find Methods of PDO
 
-class GUESTS
+class HOSTS
 {
 
     /**
@@ -31,33 +31,31 @@ class GUESTS
         $this->db = $DB_con;
     }
 
-    public function getGuests($segmentID)
+    public function getHosts($eventID)
 
 
     {
 
         $response = array();
 
-        $eventID = $_SESSION['event_id'];
-
 
         $sql = "
 
-        SELECT c.guest_name AS gn,c.horse_name AS hn,c.guest_id AS gId,
-        e.event_name As en,e.location AS loc,s.segment_name AS sgn
-        FROM guests c
-        JOIN events e ON c.event_id = e.event_id
-        JOIN segments s ON c.segment_id = s.segment_id
-        WHERE c.event_id=:eventID && c.segment_id=:segmentID
+        SELECT h.name AS n,h.horse AS hn,h.host_id AS hId,
+        h.subtitle AS sbtl,
+        e.event_name As en,e.location AS loc
+        FROM hosts h
+        JOIN events e ON h.event_id = e.event_id
+        WHERE h.event_id=:eventID
         
         
         ";
 
 
         $stmt = $this->db->prepare($sql);
-        $stmt->execute(array(':eventID' => $eventID, ':segmentID' => $segmentID));
+        $stmt->execute(array(':eventID' => $eventID));
         $res = $stmt->fetchALL(PDO::FETCH_ASSOC);
-        $response['guests'] = $res;
+        $response['hosts'] = $res;
 
 
         //print_r($res);
@@ -76,19 +74,17 @@ class GUESTS
     }
 
 
-    public function createGuest($guest_name, $guest_number, $horse_name, $segment_id)
+    public function createHost($name, $subtitle, $horse, $event_id)
     {
 
         $response = array();
 
-        $event_id = $_SESSION['event_id'];
+        $stmt = $this->db->prepare('INSERT INTO hosts(name,subtitle,horse,event_id) VALUES(:hn,:hs,:horse,:event_id)');
 
-        $stmt = $this->db->prepare('INSERT INTO guests(guest_number,guest_name,horse_name,segment_id,event_id) VALUES(:guest_number,:guest_name,:horse_name,:segment_id,:event_id)');
 
-        $stmt->bindParam(':guest_number', $guest_number);
-        $stmt->bindParam(':guest_name', $guest_name);
-        $stmt->bindParam(':horse_name', $horse_name);
-        $stmt->bindParam(':segment_id', $segment_id);
+        $stmt->bindParam(':hn', $name);
+        $stmt->bindParam(':hs', $subtitle);
+        $stmt->bindParam(':horse', $horse);
         $stmt->bindParam(':event_id', $event_id);
         $stmt->execute();
 
@@ -107,44 +103,42 @@ class GUESTS
     }
 
 
-    public function guest_detail($guestId)
+    public function host_detail($hostID)
     {
 
         $response = array();
 
         $sql = "
         
-        SELECT c.guest_name as 'Guest Name', c.horse_name as 'Horse', 
-        c.guest_number as 'Number',c.country as 'Country'
-        FROM guests c 
-        WHERE c.guest_id = :guestId
+        SELECT h.name as 'Host Name', h.subtitle as 'Subtitle', h.horse as 'Horse'
+        FROM hosts h 
+        WHERE h.host_id = :hostId
         
         ";
 
         $stmt = $this->db->prepare($sql);
-        $stmt->execute(array(':guestId' => $guestId));
+        $stmt->execute(array(':hostId' => $hostID));
         $res = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $response['guest'] = $res;
+        $response['host'] = $res;
 
 
         $sql = "
         
-        SELECT c.guest_name as 'gn', c.horse_name as 'hn', 
-        c.country, c.guest_number as num,
-        s.segment_name as sgn,e.event_name as en ,e.location as loc
-        FROM guests c 
-        JOIN segments s ON c.segment_id = s.segment_id
-        JOIN events e ON c.event_id = e.event_id
-        WHERE c.guest_id = :guestId
+        SELECT h.name as 'hn', h.subtitle as 'hs', h.horse as 'hhn',
+        e.event_name as 'en',e.location as 'loc'
+        FROM hosts h 
+        JOIN events e ON h.event_id = e.event_id
+        WHERE h.host_id = :hostId
         
         ";
 
         $stmt = $this->db->prepare($sql);
-        $stmt->execute(array(':guestId' => $guestId));
+        $stmt->execute(array(':hostId' => $hostID));
         $res = $stmt->fetch(PDO::FETCH_ASSOC);
 
         $response['full-details'] = $res;
+
 
         //print_r($res);
 
@@ -162,24 +156,17 @@ class GUESTS
 
     }
 
-    public function updateGuest($update_array){
-
-        $name = $update_array['Guest_Name'];
-        $horse = $update_array['Horse'];
-        $number = $update_array['Number'];
-        $country = $update_array['Country'];
-        $id = $update_array['gId'];
+    public function updateHost($name,$horse,$subtitle,$id){
 
 
-        $sql = "UPDATE guests SET guest_name = :gName, 
-            horse_name = :hName, guest_number = :gNumber ,country = :gCountry 
-            WHERE guest_id = :gId";
+        $sql = "UPDATE hosts SET name = :hName, 
+            horse = :hHorse, subtitle = :hSubtitle  
+            WHERE host_id = :hId";
         $stmt = $this->db->prepare($sql);
-        $stmt->bindParam(':gName', $name, PDO::PARAM_STR);
-        $stmt->bindParam(':hName', $horse, PDO::PARAM_STR);
-        $stmt->bindParam(':gNumber', $number, PDO::PARAM_STR);
-        $stmt->bindParam(':gCountry', $country, PDO::PARAM_STR);
-        $stmt->bindParam(':gId', $id, PDO::PARAM_STR);
+        $stmt->bindParam(':hName', $name, PDO::PARAM_STR);
+        $stmt->bindParam(':hHorse', $horse, PDO::PARAM_STR);
+        $stmt->bindParam(':hSubtitle', $subtitle, PDO::PARAM_STR);
+        $stmt->bindParam(':hId', $id, PDO::PARAM_STR);
         $stmt->execute();
 
         if ($stmt->rowCount() > 0) {
@@ -194,11 +181,11 @@ class GUESTS
 
     }
 
-    public function deleteGuest($id) {
+    public function deleteHost($id) {
 
-        $sql = "DELETE FROM guests WHERE guest_id =  :gId";
+        $sql = "DELETE FROM hosts WHERE host_id =  :hId";
         $stmt = $this->db->prepare($sql);
-        $stmt->bindParam(':gId', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':hId', $id, PDO::PARAM_INT);
         $stmt->execute();
 
         if ($stmt->rowCount() > 0) {

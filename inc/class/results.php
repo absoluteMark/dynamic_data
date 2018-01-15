@@ -59,10 +59,13 @@ class RESULTS
         
         SELECT
           c.guest_name AS gn,c.horse_name AS hn,
-          CAST(AVG(x.score_result) AS DECIMAL(10,3)) AS av
+          CAST(AVG(x.score_result) AS DECIMAL(10,3)) AS av,
+          e.event_name AS en, e.location AS loc, s.segment_name AS sgn
         FROM results x
         JOIN guests c ON x.guest_id = c.guest_id
         JOIN scores f ON x.score_id = f.score_id
+        JOIN events e ON x.event_id = e.event_id
+        JOIN segments s ON x.segment_id = s.segment_id
         WHERE x.segment_id = :segmentID
         GROUP BY c.guest_name
         ORDER BY av DESC
@@ -231,8 +234,8 @@ class RESULTS
     {
 
         $eventID = $_SESSION['event_id'];
-        $segmentID = $_SESSION['segment_id'];
-        $guestID = $_SESSION['guest_id'];
+        $segmentID = $results_array['segmentId'];
+        $guestID = $results_array['guestId'];
 
         $sql = "
         INSERT INTO results(score_result,score_id,event_id,segment_id,guest_id) 

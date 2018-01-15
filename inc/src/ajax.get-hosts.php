@@ -4,63 +4,60 @@ header('Content-type: application/json');
 
 require_once 'dbconfig.php';
 
-if ($_POST['segmentId']) {
+if ($_POST['eventId']) {
 
 
-    $segmentID = $_POST['segmentId'];
-    $results = new \App\Scoreboard\ RESULTS($DB_con);
+    $eventID = $_POST['eventId'];
+    $host = new \App\Scoreboard\ HOSTS($DB_con);
 
-    $response = $results->getAvByName($segmentID);
-
+    $response = $host->getHosts($eventID);
 
     //Output to csv file section
     //For multi-value records, first line fields
 
-    $keys = array_keys($response['guests']);
+    $keys = array_keys($response['hosts']);
     $fields = "";
-    for ($i = 0; $i < count($response['guests']); $i++) {
-        foreach ($response['guests'][$keys[$i]] as $key => $value) {
-            if ($key == "gn"){
+    for ($i = 0; $i < count($response['hosts']); $i++) {
+        foreach ($response['hosts'][$keys[$i]] as $key => $value) {
+            if ($key == "n"){
                 $fields = $fields . $key . "_" . $i . ",";
             } elseif ($key == "hn") {
                 $fields = $fields . $key . "_" . $i . ",";
-            } elseif ($key == "av") {
+            } elseif ($key == "sbtl") {
                 $fields = $fields . $key . "_" . $i . ",";
             }
-
         }
     }
 
     $fields = $fields . "en" . ",";
     $fields = $fields . "loc" . ",";
-    $fields = $fields . "sgn" . ",";
     $fields = $fields . "end" . PHP_EOL;
 
     $values = "";
 
-    $en = $response['guests'][0]['en'];
-    $loc = $response['guests'][0]['loc'];
-    $sgn = $response['guests'][0]['sgn'];
+    $en = $response['hosts'][0]['en'];
+    $loc = $response['hosts'][0]['loc'];
+    $sgn = $response['hosts'][0]['sgn'];
 
-    for ($i = 0; $i < count($response['guests']); $i++) {
-        foreach ($response['guests'][$keys[$i]] as $key => $value) {
-            if ($key == "gn"){
+    for ($i = 0; $i < count($response['hosts']); $i++) {
+        foreach ($response['hosts'][$keys[$i]] as $key => $value) {
+            if ($key == "n"){
                 $values = $values . $value . ",";
             } elseif ($key == "hn") {
                 $values = $values . $value . ",";
-            } elseif ($key == "av") {
+            } elseif ($key == "sbtl") {
                 $values = $values . $value . ",";
             }
+
         }
     }
     $values = $values . $en . ",";
     $values = $values . $loc . ",";
-    $values = $values . $sgn . ",";
     $values = $values . "end";
 
 
 
-    $my_file = 'results_table.csv';
+    $my_file = 'hosts.csv';
     $this_dir = dirname(__FILE__);
     $parent_dir = realpath($this_dir . '/..');
     $grandparent_dir = realpath($parent_dir . '/..');
@@ -71,10 +68,6 @@ if ($_POST['segmentId']) {
     fclose($handle);
 
     //End of Output to CSV Section
-
-
-
-
 
 } else {
     $response = array();

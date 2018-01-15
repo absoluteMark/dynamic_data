@@ -35,6 +35,7 @@ include_once INC_PATH.'class/guests.php';
 include_once INC_PATH.'class/scores.php';
 include_once INC_PATH.'class/judges.php';
 include_once INC_PATH.'class/results.php';
+include_once INC_PATH.'class/hosts.php';
 
 
 $user = new \App\Scoreboard\USER($DB_con);

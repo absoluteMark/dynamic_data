@@ -30,7 +30,9 @@ class SEGMENTS
 
         $sql = "
         
-        SELECT s.segment_id, s.segment_name, e.event_name, e.location, TIME_FORMAT(s.start_time,'%H:%i') as start_time 
+        SELECT s.segment_id, s.segment_name, e.event_name, 
+        e.location, TIME_FORMAT(s.start_time,'%H:%i') as start_time ,
+        e.event_id
         FROM segments s
         JOIN events e ON s.event_id = e.event_id 
         WHERE s.event_id=:eventID 

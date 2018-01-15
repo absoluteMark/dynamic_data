@@ -66,7 +66,7 @@ $(document).ready(function () {
 
 
     $("select#list-target").change(function () {
-        var selectedEvent = $("#list-target option:selected").val();
+        var selectedEvent = $("#list-target").find(":selected").text();
 
         //alert("You have selected the event - " + selectedEvent);
 
@@ -74,10 +74,11 @@ $(document).ready(function () {
             type: 'GET',
             url: 'inc/src/ajax.main.event.php',
             data: {name: selectedEvent},
-            datatype: 'json',
+            dataType: 'json',
             cache: false,
-            success: function (data) {
+            success: function (response) {
                 //alert("Status: " + data.status + "\nEvent ID: " + data.events['event_id']);
+                console.log(response);
 
                 $.get("inc/views/event-home.php", function (data) {
                     $('#main').html(data);
@@ -150,9 +151,15 @@ function submitEvent() {
             alert('Error !')
         }
     });
+
     return false;
 }
 
+function reload() {
 
+
+    location.reload(true);
+
+}
 
 
