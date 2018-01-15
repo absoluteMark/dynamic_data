@@ -14,9 +14,10 @@ if ($_POST['guest_name']!="") {
     $guest_name = $_POST['guest_name'];
     $guest_number = $_POST['guest_number'];
     $horse_name = $_POST['horse_name'];
+    $country = $_POST['country'];
     $segment_id = $_POST['segmentId'];
 
-    $response = $guest->createGuest($guest_name, $guest_number, $horse_name, $segment_id);
+    $response = $guest->createGuest($guest_name, $guest_number, $horse_name, $country, $segment_id);
 
 }
 else {

@@ -74,7 +74,7 @@ function selectResult (guestID){
         dataType: 'json',
         success: function (data) {
             console.log(data);
-            alert('Selected');
+            //alert('Selected');
 
         },
         error: function () {

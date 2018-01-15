@@ -6,6 +6,8 @@ require_once 'dbconfig.php';
 
 if ($_POST['segmentID']) {
 
+    //print_r($_POST);
+
     $_SESSION['segmentID'] = $_POST['segmentID'];
     $segmentID = $_POST['segmentID'];
     $guest = new \App\Scoreboard\ GUESTS($DB_con);

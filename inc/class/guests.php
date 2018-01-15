@@ -40,6 +40,8 @@ class GUESTS
 
         $eventID = $_SESSION['event_id'];
 
+        //print_r($eventID);
+
 
         $sql = "
 
@@ -53,12 +55,12 @@ class GUESTS
         
         ";
 
-
         $stmt = $this->db->prepare($sql);
         $stmt->execute(array(':eventID' => $eventID, ':segmentID' => $segmentID));
         $res = $stmt->fetchALL(PDO::FETCH_ASSOC);
         $response['guests'] = $res;
 
+        //print_r($res);
 
         // check for success
         if ($stmt->rowCount() >= 1) {
@@ -74,18 +76,19 @@ class GUESTS
     }
 
 
-    public function createGuest($guest_name, $guest_number, $horse_name, $segment_id)
+    public function createGuest($guest_name, $guest_number, $horse_name, $country, $segment_id)
     {
 
         $response = array();
 
         $event_id = $_SESSION['event_id'];
 
-        $stmt = $this->db->prepare('INSERT INTO guests(guest_number,guest_name,horse_name,segment_id,event_id) VALUES(:guest_number,:guest_name,:horse_name,:segment_id,:event_id)');
+        $stmt = $this->db->prepare('INSERT INTO guests(guest_number,guest_name,horse_name,country,segment_id,event_id) VALUES(:guest_number,:guest_name,:horse_name,:country,:segment_id,:event_id)');
 
         $stmt->bindParam(':guest_number', $guest_number);
         $stmt->bindParam(':guest_name', $guest_name);
         $stmt->bindParam(':horse_name', $horse_name);
+        $stmt->bindParam(':country', $country);
         $stmt->bindParam(':segment_id', $segment_id);
         $stmt->bindParam(':event_id', $event_id);
         $stmt->execute();

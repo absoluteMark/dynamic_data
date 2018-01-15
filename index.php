@@ -94,7 +94,7 @@ include INC_PATH . '/heads/head.phtml';
         <div class="row justify-content-center">
             <div class="col-md-6 col-md-offset-3" align="center">
                 <img src="images/logo.png" alt="Absolute Live Scoreboard" width="200" height="200"><br><br>
-                <h4 class="mb-5">Live Scoreboard System</h4>
+                <h4 class="mb-5">Live Data Solution</h4>
 
                 <div class="form-container">
                     <form method="post">

@@ -6,7 +6,7 @@
     </button>
     <a class="navbar-brand" href="#">
         <img src="images/alp_lens.png" width="30" height="30" class="d-inline-block align-top" alt="">
-        Dynamic Overlays
+        Dynamic Data
     </a>
     <div class="collapse navbar-collapse" id="navbarNav">
         <div class="navbar-nav dropdown">

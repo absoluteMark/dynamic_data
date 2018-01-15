@@ -469,6 +469,7 @@ function createGuest(segmentID) {
                     });
                 }
 
+                refreshGuestList(segmentID);
                 $(submitBtn).html('Create Another ?').removeAttr('disabled');
                 $(closeBtn).removeAttr('disabled');
 
@@ -480,7 +481,7 @@ function createGuest(segmentID) {
         }
     });
 
-    refreshGuestList(segmentID);
+
 
 
 }
@@ -649,7 +650,7 @@ function selectGuest(guestID) {
         dataType: 'json',
         success: function (data) {
             console.log(data);
-            alert('Selected');
+            //alert('Selected');
 
         },
         error: function () {
@@ -785,6 +786,7 @@ function createScore(segmentID) {
                     });
                 }
 
+                refreshScoreList(segmentID);
                 $(submitBtn).html('Create Another ?').removeAttr('disabled');
                 $(closeBtn).removeAttr('disabled');
 
@@ -796,7 +798,7 @@ function createScore(segmentID) {
         }
     });
 
-    refreshScoreList(segmentID);
+
 
 }
 
@@ -1317,7 +1319,7 @@ function selectHost(hostID) {
         dataType: 'json',
         success: function (data) {
             console.log(data);
-            alert('Selected');
+            //alert('Selected');
 
         },
         error: function () {

@@ -68,7 +68,7 @@ class HOSTS
         } else {
 
             $response['status'] = 'error';
-            $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; No guests exist. Create one.';
+            $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; No hosts exist. Create one.';
         }
         return $response;
     }
@@ -92,11 +92,11 @@ class HOSTS
         // check for successful creation
         if ($stmt->rowCount() == 1) {
             $response['status'] = 'success';
-            $response['message'] = '<span class="fas fa-check-circle"></span> &nbsp; Guest created successfully.';
+            $response['message'] = '<span class="fas fa-check-circle"></span> &nbsp; Host created successfully.';
         } else {
 
             $response['status'] = 'error'; // could not create record
-            $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; Could not create guest.';
+            $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; Could not create host.';
         }
         return $response;
 
