@@ -10,11 +10,15 @@ session_start();
     </li>
 </ul>
 
-<div class="alert alert-info" role="alert" id="resultsAlert">
+<div class="alert alert-info" role="alert" id="results-alert">
 
 </div>
 
-<table class="table table-sm" id="results-list">
+<div class="list-group" id="results-list" style="display: none">
+
+</div>
+
+<table class="table table-sm" id="results-table">
 
 </table>
 

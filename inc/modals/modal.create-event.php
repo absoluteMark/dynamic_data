@@ -18,10 +18,6 @@
                         <input type="text" class="form-control" name="event_location" id="event_location" placeholder="Event Location">
                         <small id="event_locationHelp" class="form-text text-muted">Location of event</small>
                     </div>
-                    <div class="form-group">
-                        <label for="bannerUpload">Banner Artwork</label>
-                        <input type="file" class="form-control-file" id="bannerUpload">
-                    </div>
                 </form>
             <div id="errorDiv1"></div>
             </div>

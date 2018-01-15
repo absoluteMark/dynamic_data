@@ -4,6 +4,10 @@ session_start();
 
 ?>
 
+<div class="alert alert-info" role="alert" id="results-alert">
+
+</div>
+
 <div class="list-group" id="results-list">
 
 </div>

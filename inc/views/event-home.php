@@ -9,10 +9,13 @@ session_start();
     <div class="card">
         <div class="card-header" id="segment-header">
             <h3 class="float-left text-danger" id="mode">Live Mode</h3>
-            <h3 class="text-right" id="segment-title" onclick="loadSegmentCreate()">Segments</h3>
+            <h3 class="text-right" id="segment-title">Segments</h3>
+            <button type="button" class="btn btn-warning btn-sm float-right" onclick="loadSegmentCreate()">Add</button>
         </div>
         <div class="card-body" id="segment-body">
-
+            <div class="alert alert-info" role="alert">
+                <div class="small text-right">Click + ALT to Edit</div>
+            </div>
 
             <div class="list-group" id="segment-list">
 
@@ -30,6 +33,10 @@ session_start();
         </div>
 
         <div class="card-body" id="guest-body" style="height: 250px;">
+
+            <div class="alert alert-info" role="alert" style="visibility: hidden" id="guest-alert">
+                <div class="small text-right">Click + ALT to Edit</div>
+            </div>
 
 
             <div class="list-group" id="guest-list">

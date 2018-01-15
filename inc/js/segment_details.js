@@ -2,9 +2,10 @@ function enterResults(segmentID) {
 
     $.get("inc/views/results.list.php", function (view) { //important
         $('#results-body').html(view);
-        $('#results-title').html("Update Results");
+        $('#results-title').html("Individual Results");
+        $('#results-alert').append('<div class="small text-right" id="hint">Click + ALT to Edit</div>');
         $('#resultsBtns').append('<button type="button" id="cancelBtnResults" class="btn btn-secondary btn-sm mr-2" ' +
-            'onclick="resultsList()">Back</button>');
+            'onclick="getResultsTable(' + segmentID + ')">Back</button>');
 
         var div_target_id = 'results-list';
 
@@ -25,7 +26,7 @@ function enterResults(segmentID) {
                         $('#' + div_target_id).html('').slideDown();
                         $.each(data.guests, function (index, val) {
                             console.log(index, val);
-                            $('#' + div_target_id).append('<div onclick="if(event.altKey){resultsMain(' + val.guest_id + ',' + segmentID +')}else{selectResult(' + val.guest_id + ')}" id="guest' + val.guest_id + '" class="list-group-item list-group-item-action" data-toggle="list">' + val.guest_name + '</div>');
+                            $('#' + div_target_id).append('<div onclick="if(event.altKey){resultsMain(' + val.gId + ',' + segmentID +')}else{selectResult(' + val.gId + ')}" id="guest' + val.gId + '" class="list-group-item list-group-item-action" data-toggle="list">' + val.gn + '</div>');
 
                         });
 
@@ -180,7 +181,7 @@ function createResult(guestID,segmentID) {
 
             $(updateBtn).attr('disabled', 'disabled');
             $(backBtn).attr('disabled', 'disabled');
-            $(errorDiv).html('<div class="alert alert-info">Submitting ...</div>')
+            $(errorDiv).html('<div class="alert alert-info">Submitting ...</div>');
             $(errorDiv).slideDown(200).delay(200);
 
             setTimeout(function () {
@@ -240,7 +241,7 @@ function resultsUpdate(guestID,segmentID){
 
             $(updateBtn).attr('disabled', 'disabled');
             $(backBtn).attr('disabled', 'disabled');
-            $(errorDiv).html('<div class="alert alert-info">Attempting update ...</div>')
+            $(errorDiv).html('<div class="alert alert-info">Attempting update ...</div>');
             $(errorDiv).slideDown(200).delay(200);
 
             setTimeout(function () {
@@ -285,6 +286,8 @@ function resultsList() {
 
     $.get("inc/views/results.list.php", function (view) { //important
         $('#results-body').html(view);
+        $('#results-title').html("Results");
+        $('#results-alert').append('<div class="small text-right" id="hint">Choose a Segment</div>');
         var content = $('#results-list');
 
         $.ajax({
@@ -344,12 +347,12 @@ function getResultsTable(segmentID) {
                 $.get("inc/views/results.table.php", function (view) {
                     $('#results-body').html(view);
                     $('#results-title').html('Results Table');
-                    $('#resultsAlert').append('<div class="small text-right" id="hint">List of Results</div>');
-                    $('#a-link').append('<a class=\"nav-link\" href=\"#\" onclick="enterResults(' + segmentID + ')">Update Results</a>');
+                    $('#results-alert').append('<div class="small text-right" id="hint">List of Results</div>');
+                    $('#a-link').append('<a class=\"nav-link\" href=\"#\" onclick="enterResults(' + segmentID + ')">Individual Results</a>');
                     $('#resultsBtns').append('<button type="button" id="cancelBtnResults" class="btn btn-secondary btn-sm mr-2" ' +
                         'onclick="resultsList()">Back</button>');
 
-                    var table = $('#results-list');
+                    var table = $('#results-table');
                     var html = "<thead class='thead-dark'>" +
                         "<th scope='col'>Name</th>" +
                         "<th scope='col'>Horse</th>" +

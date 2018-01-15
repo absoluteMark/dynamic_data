@@ -60,7 +60,10 @@ function loadSegmentCreate() {
 function loadSegmentUpdate(segmentID) {
 
     var form_target_id = "update-form";
+    $('#guest-alert').css('visibility','hidden');
 
+
+    clearGuestList();
 
     $.ajax({
         type: 'GET',
@@ -109,7 +112,10 @@ function loadSegmentUpdate(segmentID) {
 
 function refreshSegmentList() {
 
-    $('#segment-body').html("<div class=\"list-group\" id=\"segment-list\"></div>");
+    $('#segment-body').html("<div class=\"alert alert-info\" role=\"alert\">\n" +
+        "<div class=\"small text-right\"><p class=\"text-danger float-left\">Choose a Segment</p>Click + ALT to Edit</div>\n" +
+        "</div>" +
+        "<div class=\"list-group\" id=\"segment-list\"></div>");
     $('#mode').html('Live Mode').toggleClass('text-danger text-primary');
     $('#segment-title').html('Segments');
     segmentList();
@@ -139,7 +145,7 @@ function createSegment() {
 
             $(submitBtn).attr('disabled', 'disabled');
             $(closeBtn).attr('disabled', 'disabled');
-            $(errorDiv).html('<div class="alert alert-info">Processing ...</div>')
+            $(errorDiv).html('<div class="alert alert-info">Processing ...</div>');
             $(errorDiv).slideDown(200).delay(200);
 
             setTimeout(function () {
@@ -200,7 +206,7 @@ function segmentUpdate(segmentID) {
             $(updateBtn).attr('disabled', 'disabled');
             $(backBtn).attr('disabled', 'disabled');
             $(deleteBtn).attr('disabled', 'disabled');
-            $(errorDiv).html('<div class="alert alert-info">Attempting update ...</div>')
+            $(errorDiv).html('<div class="alert alert-info">Attempting update ...</div>');
             $(errorDiv).slideDown(200).delay(200);
 
             setTimeout(function () {
@@ -307,7 +313,7 @@ function segmentDelete(segmentID) {
  *
  * Guest CRUD functions
  *
- * @param segmentID,contestantID
+ *
  */
 
 function clearGuestList(){
@@ -321,6 +327,7 @@ function refreshGuestList(segmentID) {
     var div_target_id = 'guest-list';
 
     $('#guest-title').html('Guests');
+    $('#guest-alert').css('visibility','visible');
 
     $.ajax({
         type: 'POST',
@@ -339,7 +346,7 @@ function refreshGuestList(segmentID) {
                     $('#' + div_target_id).html('').slideDown();
                     $.each(data.guests, function (index, val) {
                         console.log(index, val);
-                        $('#' + div_target_id).append('<div onclick="if(event.altKey){loadGuestUpdate(' + val.guest_id + ',' + segmentID +')}else{selectGuest(' + val.guest_id + ')}" id="guest' + val.guest_id + '" class="list-group-item list-group-item-action" data-toggle="list">' + val.guest_name + '</div>');
+                        $('#' + div_target_id).append('<div onclick="if(event.altKey){loadGuestUpdate(' + val.gId + ',' + segmentID +')}else{selectGuest(' + val.gId + ')}" id="guest' + val.gId + '" class="list-group-item list-group-item-action" data-toggle="list">' + val.gn + '</div>');
 
                     });
 
@@ -437,7 +444,7 @@ function createGuest(segmentID) {
 
             $(submitBtn).attr('disabled', 'disabled');
             $(closeBtn).attr('disabled', 'disabled');
-            $(errorDiv).html('<div class="alert alert-info">Processing ...</div>')
+            $(errorDiv).html('<div class="alert alert-info">Processing ...</div>');
             $(errorDiv).slideDown(200).delay(200);
 
 
@@ -523,7 +530,7 @@ function guestUpdate(guestID,segmentID) {
             $(updateBtn).attr('disabled', 'disabled');
             $(backBtn).attr('disabled', 'disabled');
             $(deleteBtn).attr('disabled', 'disabled');
-            $(errorDiv).html('<div class="alert alert-info">Attempting update ...</div>')
+            $(errorDiv).html('<div class="alert alert-info">Attempting update ...</div>');
             $(errorDiv).slideDown(200).delay(200);
 
             setTimeout(function () {
@@ -733,7 +740,7 @@ function createScore(segmentID) {
 
             $(submitBtn).attr('disabled', 'disabled');
             $(closeBtn).attr('disabled', 'disabled');
-            $(errorDiv).html('<div class="alert alert-info">Processing ...</div>')
+            $(errorDiv).html('<div class="alert alert-info">Processing ...</div>');
             $(errorDiv).slideDown(200).delay(200);
 
 
@@ -774,6 +781,7 @@ function refreshScoreList(segmentID) {
     var div_target_id = 'guest-list';
 
     $('#guest-title').html('Scores');
+    $('#guest-alert').css('visibility','visible');
 
     $.ajax({
         type: 'POST',
@@ -840,7 +848,7 @@ function scoreUpdate(scoreID,segmentID){
             $(updateBtn).attr('disabled', 'disabled');
             $(backBtn).attr('disabled', 'disabled');
             $(deleteBtn).attr('disabled', 'disabled');
-            $(errorDiv).html('<div class="alert alert-info">Attempting update ...</div>')
+            $(errorDiv).html('<div class="alert alert-info">Attempting update ...</div>');
             $(errorDiv).slideDown(200).delay(200);
 
             setTimeout(function () {

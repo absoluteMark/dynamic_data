@@ -1,50 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6c49b85b-4997-40c6-9970-8bdf9e401680" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/inc/src/ajax.create-result-form.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/inc/src/ajax.delete-guest.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/inc/src/ajax.delete-score.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/inc/src/ajax.get-guest-results.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/inc/views/results.list.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/inc/views/results.table.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/inc/views/results.update.php" />
+    <list default="true" id="6c49b85b-4997-40c6-9970-8bdf9e401680" name="Default" comment="adds results CRUD and UX functions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/data_output/guests.csv" afterPath="$PROJECT_DIR$/data_output/guests.csv" />
-      <change beforePath="$PROJECT_DIR$/data_output/results.csv" afterPath="$PROJECT_DIR$/data_output/results.csv" />
-      <change beforePath="$PROJECT_DIR$/inc/class/class.user.php" afterPath="$PROJECT_DIR$/inc/class/class.user.php" />
-      <change beforePath="$PROJECT_DIR$/inc/class/events.php" afterPath="$PROJECT_DIR$/inc/class/events.php" />
+      <change beforePath="$PROJECT_DIR$/data_output/single_result.csv" afterPath="$PROJECT_DIR$/data_output/single_result.csv" />
       <change beforePath="$PROJECT_DIR$/inc/class/guests.php" afterPath="$PROJECT_DIR$/inc/class/guests.php" />
-      <change beforePath="$PROJECT_DIR$/inc/class/judges.php" afterPath="$PROJECT_DIR$/inc/class/judges.php" />
       <change beforePath="$PROJECT_DIR$/inc/class/results.php" afterPath="$PROJECT_DIR$/inc/class/results.php" />
-      <change beforePath="$PROJECT_DIR$/inc/class/scores.php" afterPath="$PROJECT_DIR$/inc/class/scores.php" />
-      <change beforePath="$PROJECT_DIR$/inc/class/segments.php" afterPath="$PROJECT_DIR$/inc/class/segments.php" />
       <change beforePath="$PROJECT_DIR$/inc/js/event_segments.js" afterPath="$PROJECT_DIR$/inc/js/event_segments.js" />
       <change beforePath="$PROJECT_DIR$/inc/js/segment_details.js" afterPath="$PROJECT_DIR$/inc/js/segment_details.js" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.create-event.php" afterPath="$PROJECT_DIR$/inc/src/ajax.create-event.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.create-guest.php" afterPath="$PROJECT_DIR$/inc/src/ajax.create-guest.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.create-result.php" afterPath="$PROJECT_DIR$/inc/src/ajax.create-result.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.create-score.php" afterPath="$PROJECT_DIR$/inc/src/ajax.create-score.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.create-segment.php" afterPath="$PROJECT_DIR$/inc/src/ajax.create-segment.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.delete-segment.php" afterPath="$PROJECT_DIR$/inc/src/ajax.delete-segment.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.get-events.php" afterPath="$PROJECT_DIR$/inc/src/ajax.get-events.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.get-guests.php" afterPath="$PROJECT_DIR$/inc/src/ajax.get-guests.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.get-scores.php" afterPath="$PROJECT_DIR$/inc/src/ajax.get-scores.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.get-segments.php" afterPath="$PROJECT_DIR$/inc/src/ajax.get-segments.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.main.event.php" afterPath="$PROJECT_DIR$/inc/src/ajax.main.event.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.main.guest.php" afterPath="$PROJECT_DIR$/inc/src/ajax.main.guest.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.main.results.php" afterPath="$PROJECT_DIR$/inc/src/ajax.main.results.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.main.score.php" afterPath="$PROJECT_DIR$/inc/src/ajax.main.score.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.main.segment.php" afterPath="$PROJECT_DIR$/inc/src/ajax.main.segment.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.update-guest.php" afterPath="$PROJECT_DIR$/inc/src/ajax.update-guest.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.update-result.php" afterPath="$PROJECT_DIR$/inc/src/ajax.update-result.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.update-score.php" afterPath="$PROJECT_DIR$/inc/src/ajax.update-score.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.update-segment.php" afterPath="$PROJECT_DIR$/inc/src/ajax.update-segment.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/dbconfig.php" afterPath="$PROJECT_DIR$/inc/src/dbconfig.php" />
-      <change beforePath="$PROJECT_DIR$/inc/views/createGuest.php" afterPath="$PROJECT_DIR$/inc/views/createGuest.php" />
-      <change beforePath="$PROJECT_DIR$/inc/views/createSegment.php" afterPath="$PROJECT_DIR$/inc/views/createSegment.php" />
+      <change beforePath="$PROJECT_DIR$/inc/modals/modal.create-event.php" afterPath="$PROJECT_DIR$/inc/modals/modal.create-event.php" />
       <change beforePath="$PROJECT_DIR$/inc/views/event-home.php" afterPath="$PROJECT_DIR$/inc/views/event-home.php" />
-      <change beforePath="$PROJECT_DIR$/inc/views/results.php" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/inc/views/results.list.php" afterPath="$PROJECT_DIR$/inc/views/results.list.php" />
+      <change beforePath="$PROJECT_DIR$/inc/views/results.table.php" afterPath="$PROJECT_DIR$/inc/views/results.table.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -86,8 +54,8 @@
       <file leaf-file-name="event_segments.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/inc/js/event_segments.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="436">
-              <caret line="315" column="0" lean-forward="true" selection-start-line="315" selection-start-column="0" selection-end-line="315" selection-end-column="0" />
+            <state relative-caret-position="299">
+              <caret line="783" column="50" lean-forward="true" selection-start-line="783" selection-start-column="50" selection-end-line="783" selection-end-column="50" />
               <folding>
                 <element signature="n#!!doc;n#segmentList#0" expanded="false" />
                 <element signature="n#!!block;n#segmentList#0" expanded="false" />
@@ -96,18 +64,17 @@
                 <element signature="n#!!block;n#refreshSegmentList#0" expanded="false" />
                 <element signature="n#!!block;n#createSegment#0" expanded="false" />
                 <element signature="n#!!block;n#segmentUpdate#0" expanded="false" />
-                <element signature="n#!!doc;n#clearGuestList#0" expanded="false" />
+                <element signature="n#!!block;n#segmentDelete#0" expanded="false" />
+                <element signature="n#!!block;n#clearGuestList#0" expanded="false" />
                 <element signature="n#!!block;n#refreshGuestList#0" expanded="false" />
+                <element signature="n#!!block;n#loadGuestUpdate#0" expanded="false" />
                 <element signature="n#!!block;n#createGuest#0" expanded="false" />
                 <element signature="n#!!block;n#loadGuestCreate#0" expanded="false" />
                 <element signature="n#!!block;n#guestUpdate#0" expanded="false" />
+                <element signature="n#!!block;n#guestDelete#0" expanded="false" />
                 <element signature="n#!!block;n#selectGuest#0" expanded="false" />
                 <element signature="n#!!doc;n#loadScoreCreate#0" expanded="false" />
-                <element signature="n#!!block;n#loadScoreCreate#0" expanded="false" />
                 <element signature="n#!!block;n#loadScoreUpdate#0" expanded="false" />
-                <element signature="n#!!block;n#createScore#0" expanded="false" />
-                <element signature="n#!!block;n#refreshScoreList#0" expanded="false" />
-                <element signature="n#!!block;n#scoreUpdate#0" expanded="false" />
                 <element signature="n#!!block;n#scoreDelete#0" expanded="false" />
               </folding>
             </state>
@@ -117,16 +84,111 @@
       <file leaf-file-name="segment_details.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/inc/js/segment_details.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1208">
-              <caret line="226" column="6" lean-forward="false" selection-start-line="226" selection-start-column="6" selection-end-line="226" selection-end-column="6" />
+            <state relative-caret-position="417">
+              <caret line="289" column="92" lean-forward="false" selection-start-line="289" selection-start-column="92" selection-end-line="289" selection-end-column="92" />
               <folding>
-                <element signature="n#!!block;n#enterResults#0" expanded="false" />
                 <element signature="n#!!block;n#selectResult#0" expanded="false" />
                 <element signature="n#!!block;n#resultsMain#0" expanded="false" />
                 <element signature="n#!!block;n#loadResultsCreate#0" expanded="false" />
-                <element signature="n#!!block;n#resultsList#0" expanded="false" />
-                <element signature="n#!!block;n#getResultsTable#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="results.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/inc/class/results.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="503">
+              <caret line="71" column="0" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+              <folding>
+                <element signature="e#6#145#0#PHP" expanded="true" />
+                <element signature="e#429#846#0#PHP" expanded="false" />
+                <element signature="e#1956#2385#0#PHP" expanded="false" />
+                <element signature="e#2392#3948#0#PHP" expanded="false" />
+                <element signature="e#3955#5447#0#PHP" expanded="false" />
+                <element signature="e#5454#6749#0#PHP" expanded="false" />
+                <element signature="e#8156#9453#0#PHP" expanded="false" />
+                <marker date="1515976578622" expanded="true" signature="928:1258" ph="SELECT c.gue... results" />
+                <marker date="1515976578622" expanded="true" signature="1709:1715" ph=" " />
+                <marker date="1515976578622" expanded="true" signature="1866:1872" ph=" " />
+                <marker date="1515976578622" expanded="true" signature="7335:7407" ph="UPDATE results... " />
+                <marker date="1515976578622" expanded="true" signature="7848:7854" ph=" " />
+                <marker date="1515976578622" expanded="true" signature="8067:8073" ph=" " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="results.update.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/inc/views/results.update.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="7" column="8" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="9" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="results.list.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/inc/views/results.list.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="144">
+              <caret line="6" column="56" lean-forward="false" selection-start-line="6" selection-start-column="56" selection-end-line="6" selection-end-column="56" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="results.table.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/inc/views/results.table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="event-home.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/inc/views/event-home.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="268">
+              <caret line="34" column="70" lean-forward="true" selection-start-line="34" selection-start-column="70" selection-end-line="34" selection-end-column="70" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="modal.create-event.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/inc/modals/modal.create-event.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="456">
+              <caret line="19" column="26" lean-forward="false" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="segments.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/inc/views/segments.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="createSegment.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/inc/views/createSegment.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="7" column="10" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="9" selection-end-column="6" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -203,9 +265,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/inc/bower/package.json" />
-        <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/inc/footers/footer.phtml" />
         <option value="$PROJECT_DIR$/inc/footers/newfooter.phtml" />
         <option value="$PROJECT_DIR$/inc/src/ajax.get-segments.php" />
         <option value="$PROJECT_DIR$/inc/styles/style.css" />
@@ -229,7 +288,6 @@
         <option value="$PROJECT_DIR$/inc/src/ajax.delete-guest.php" />
         <option value="$PROJECT_DIR$/inc/src/ajax.delete-score.php" />
         <option value="$PROJECT_DIR$/inc/class/judges.php" />
-        <option value="$PROJECT_DIR$/inc/class/guests.php" />
         <option value="$PROJECT_DIR$/inc/class/scores.php" />
         <option value="$PROJECT_DIR$/inc/class/events.php" />
         <option value="$PROJECT_DIR$/inc/class/class.user.php" />
@@ -239,20 +297,24 @@
         <option value="$PROJECT_DIR$/inc/src/ajax.get-results.php" />
         <option value="$PROJECT_DIR$/inc/src/ajax.get-guestresults.php" />
         <option value="$PROJECT_DIR$/inc/views/resultsList.php" />
-        <option value="$PROJECT_DIR$/inc/views/event-home.php" />
         <option value="$PROJECT_DIR$/inc/views/resultsupdate.php" />
-        <option value="$PROJECT_DIR$/inc/views/results.update.php" />
         <option value="$PROJECT_DIR$/inc/src/ajax.main.results.php" />
         <option value="$PROJECT_DIR$/inc/src/ajax.update-result.php" />
-        <option value="$PROJECT_DIR$/inc/views/results.list.php" />
         <option value="$PROJECT_DIR$/inc/src/ajax.create-result-form.php" />
-        <option value="$PROJECT_DIR$/inc/class/results.php" />
         <option value="$PROJECT_DIR$/inc/src/ajax.create-result.php" />
-        <option value="$PROJECT_DIR$/inc/js/segment_details.js" />
         <option value="$PROJECT_DIR$/inc/class/segments.php" />
         <option value="$PROJECT_DIR$/inc/views/createSegment.php" />
         <option value="$PROJECT_DIR$/inc/src/ajax.create-segment.php" />
         <option value="$PROJECT_DIR$/inc/views/createGuest.php" />
+        <option value="$PROJECT_DIR$/inc/class/guests.php" />
+        <option value="$PROJECT_DIR$/inc/views/segments.php" />
+        <option value="$PROJECT_DIR$/inc/modals/modal.create-event.php" />
+        <option value="$PROJECT_DIR$/inc/views/results.update.php" />
+        <option value="$PROJECT_DIR$/inc/class/results.php" />
+        <option value="$PROJECT_DIR$/inc/views/results.list.php" />
+        <option value="$PROJECT_DIR$/inc/views/results.table.php" />
+        <option value="$PROJECT_DIR$/inc/js/segment_details.js" />
+        <option value="$PROJECT_DIR$/inc/views/event-home.php" />
         <option value="$PROJECT_DIR$/inc/js/event_segments.js" />
       </list>
     </option>
@@ -340,13 +402,7 @@
               <item name="dynamic_data" type="b2602c69:ProjectViewProjectNode" />
               <item name="dynamic_data" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="inc" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="dynamic_data" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dynamic_data" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="inc" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="styles" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="modals" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="dynamic_data" type="b2602c69:ProjectViewProjectNode" />
@@ -444,7 +500,7 @@
       <workItem from="1515724165553" duration="623000" />
       <workItem from="1515729116546" duration="29991000" />
       <workItem from="1515818970017" duration="13431000" />
-      <workItem from="1515833115606" duration="57828000" />
+      <workItem from="1515833115606" duration="65659000" />
     </task>
     <task id="LOCAL-00001" summary="Add delete function">
       <created>1515720551843</created>
@@ -530,22 +586,38 @@
       <option name="project" value="LOCAL" />
       <updated>1515839505198</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="adds results CRUD and UX functions">
+      <created>1515967205728</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1515967205728</updated>
+    </task>
+    <task id="LOCAL-00014" summary="adds results CRUD and UX functions">
+      <created>1515967238263</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1515967238263</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="359088000" />
+    <option name="totallyTimeSpent" value="366919000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2882353" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39814815" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4282353" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298611" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23529412" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -553,7 +625,6 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.55941254" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2883721" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -614,26 +685,16 @@
     <MESSAGE value="builds CRUD for guests&#10;partial rename contestant references to guest" />
     <MESSAGE value="builds CRUD for guests and scores&#10;rename contestant references to guest&#10;rename scorename references to score" />
     <MESSAGE value="tidy up and add UX features" />
-    <option name="LAST_COMMIT_MESSAGE" value="tidy up and add UX features" />
+    <MESSAGE value="adds results CRUD and UX functions" />
+    <option name="LAST_COMMIT_MESSAGE" value="adds results CRUD and UX functions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="13" />
+      <option name="time" value="15" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/inc/src/ajax.main.contestant.php" />
-    <entry file="file://$PROJECT_DIR$/inc/src/ajax.get-contestants.php" />
-    <entry file="file://$PROJECT_DIR$/inc/src/ajax.create-contestant.php" />
-    <entry file="file://$PROJECT_DIR$/inc/src/ajax.create-guest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="11" column="6" lean-forward="false" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/inc/src/ajax.main.guest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -652,14 +713,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/inc/class/scorenames.php" />
-    <entry file="file://$PROJECT_DIR$/data_output/guests.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="1" column="23" lean-forward="false" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/inc/views/createScore.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="458">
@@ -804,14 +857,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inc/views/event-home.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="65" column="12" lean-forward="false" selection-start-line="65" selection-start-column="12" selection-end-line="65" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data_output/results.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -825,40 +870,6 @@
         <state relative-caret-position="192">
           <caret line="8" column="6" lean-forward="true" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inc/class/guests.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="17" column="58" lean-forward="false" selection-start-line="17" selection-start-column="58" selection-end-line="17" selection-end-column="58" />
-          <folding>
-            <marker date="1515894579688" expanded="true" signature="604:873" ph="SELECT c.gue... guests" />
-            <marker date="1515894579688" expanded="true" signature="1335:1341" ph=" " />
-            <marker date="1515894579688" expanded="true" signature="1491:1497" ph=" " />
-            <marker date="1515894579688" expanded="true" signature="1776:1918" ph="INSERT INTO guests... " />
-            <marker date="1515894579688" expanded="true" signature="2423:2429" ph=" " />
-            <marker date="1515894579688" expanded="true" signature="2625:2631" ph=" " />
-            <marker date="1515894579688" expanded="true" signature="2817:2964" ph="SELECT c.gue... guests" />
-            <marker date="1515894579688" expanded="true" signature="3384:3390" ph=" " />
-            <marker date="1515894579688" expanded="true" signature="3540:3546" ph=" " />
-            <marker date="1515894579688" expanded="true" signature="3677:3809" ph="UPDATE guests... " />
-            <marker date="1515894579688" expanded="true" signature="4278:4284" ph=" " />
-            <marker date="1515894579688" expanded="true" signature="4470:4476" ph=" " />
-            <marker date="1515894579688" expanded="true" signature="4597:4638" ph="DELETE FROM guests... " />
-            <marker date="1515894579688" expanded="true" signature="4925:4931" ph=" " />
-            <marker date="1515894579688" expanded="true" signature="5116:5122" ph=" " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inc/src/ajax.get-guests.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="12" column="46" lean-forward="true" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="46" />
-          <folding>
-            <marker date="1515895908335" expanded="true" signature="1488:1494" ph=" " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -902,16 +913,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inc/src/ajax.get-guest-results.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1515909647000" expanded="true" signature="393:399" ph=" " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data_output/single_result.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -930,22 +931,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inc/views/results.table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="20" column="61" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inc/views/results.update.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="16" column="21" lean-forward="false" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/inc/src/ajax.main.results.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
@@ -953,14 +938,6 @@
           <folding>
             <marker date="1515943207602" expanded="true" signature="2615:2621" ph=" " />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inc/views/results.list.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="10" column="71" lean-forward="false" selection-start-line="10" selection-start-column="71" selection-end-line="10" selection-end-column="71" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -987,31 +964,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/inc/class/results.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-201">
-          <caret line="263" column="35" lean-forward="false" selection-start-line="263" selection-start-column="35" selection-end-line="263" selection-end-column="35" />
-          <folding>
-            <element signature="e#6#145#0#PHP" expanded="true" />
-            <element signature="e#429#846#0#PHP" expanded="false" />
-            <element signature="e#853#1126#0#PHP" expanded="false" />
-            <element signature="e#1133#2206#0#PHP" expanded="false" />
-            <element signature="e#2213#2642#0#PHP" expanded="false" />
-            <element signature="e#2649#4205#0#PHP" expanded="false" />
-            <element signature="e#4212#5704#0#PHP" expanded="false" />
-            <element signature="e#7013#8343#0#PHP" expanded="false" />
-            <marker date="1515964058712" expanded="true" signature="5920:6064" ph="INSERT INTO results... " />
-            <marker date="1515964058712" expanded="true" signature="6777:6783" ph=" " />
-            <marker date="1515964058712" expanded="true" signature="6933:6939" ph=" " />
-            <marker date="1515964058712" expanded="true" signature="8555:8594" ph="SELECT * fro... " />
-            <marker date="1515964058712" expanded="true" signature="8555:8644" ph="SELECT sc.sc... scores" />
-            <marker date="1515964058712" expanded="true" signature="8909:9010" ph="SELECT g.gue... guests" />
-            <marker date="1515964058712" expanded="true" signature="9385:9391" ph=" " />
-            <marker date="1515964058712" expanded="true" signature="9577:9583" ph=" " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/inc/src/ajax.create-result.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="137">
@@ -1029,14 +981,6 @@
           <folding>
             <marker date="1515964058706" expanded="true" signature="427:433" ph=" " />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inc/views/createSegment.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="25" column="17" lean-forward="true" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1083,25 +1027,172 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/inc/src/ajax.get-guest-results.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1515909647000" expanded="true" signature="393:399" ph=" " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_output/guests.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="24">
+          <caret line="1" column="23" lean-forward="false" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/src/ajax.get-guests.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="12" column="46" lean-forward="true" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="46" />
+          <folding>
+            <marker date="1515895908335" expanded="true" signature="1488:1494" ph=" " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/class/guests.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding>
+            <marker date="1515969624645" expanded="true" signature="604:921" ph="SELECT c.gue... guests" />
+            <marker date="1515969624645" expanded="true" signature="1383:1389" ph=" " />
+            <marker date="1515969624645" expanded="true" signature="1539:1545" ph=" " />
+            <marker date="1515969624645" expanded="true" signature="1824:1966" ph="INSERT INTO guests... " />
+            <marker date="1515969624645" expanded="true" signature="2471:2477" ph=" " />
+            <marker date="1515969624645" expanded="true" signature="2673:2679" ph=" " />
+            <marker date="1515969624645" expanded="true" signature="2865:3012" ph="SELECT c.gue... guests" />
+            <marker date="1515969624645" expanded="true" signature="3432:3438" ph=" " />
+            <marker date="1515969624645" expanded="true" signature="3588:3594" ph=" " />
+            <marker date="1515969624645" expanded="true" signature="3725:3857" ph="UPDATE guests... " />
+            <marker date="1515969624645" expanded="true" signature="4326:4332" ph=" " />
+            <marker date="1515969624645" expanded="true" signature="4518:4524" ph=" " />
+            <marker date="1515969624645" expanded="true" signature="4645:4686" ph="DELETE FROM guests... " />
+            <marker date="1515969624645" expanded="true" signature="4973:4979" ph=" " />
+            <marker date="1515969624645" expanded="true" signature="5164:5170" ph=" " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_output/segments.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/js/events.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-101">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/views/segments.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/views/createSegment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="7" column="10" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="9" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/modals/modal.create-event.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="19" column="26" lean-forward="false" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/class/results.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="503">
+          <caret line="71" column="0" lean-forward="true" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+          <folding>
+            <element signature="e#6#145#0#PHP" expanded="true" />
+            <element signature="e#429#846#0#PHP" expanded="false" />
+            <element signature="e#1956#2385#0#PHP" expanded="false" />
+            <element signature="e#2392#3948#0#PHP" expanded="false" />
+            <element signature="e#3955#5447#0#PHP" expanded="false" />
+            <element signature="e#5454#6749#0#PHP" expanded="false" />
+            <element signature="e#8156#9453#0#PHP" expanded="false" />
+            <marker date="1515976578622" expanded="true" signature="928:1258" ph="SELECT c.gue... results" />
+            <marker date="1515976578622" expanded="true" signature="1709:1715" ph=" " />
+            <marker date="1515976578622" expanded="true" signature="1866:1872" ph=" " />
+            <marker date="1515976578622" expanded="true" signature="7335:7407" ph="UPDATE results... " />
+            <marker date="1515976578622" expanded="true" signature="7848:7854" ph=" " />
+            <marker date="1515976578622" expanded="true" signature="8067:8073" ph=" " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/views/results.update.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="7" column="8" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="9" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/views/results.table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/views/results.list.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="6" column="56" lean-forward="false" selection-start-line="6" selection-start-column="56" selection-end-line="6" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/inc/js/segment_details.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1208">
-          <caret line="226" column="6" lean-forward="false" selection-start-line="226" selection-start-column="6" selection-end-line="226" selection-end-column="6" />
+        <state relative-caret-position="417">
+          <caret line="289" column="92" lean-forward="false" selection-start-line="289" selection-start-column="92" selection-end-line="289" selection-end-column="92" />
           <folding>
-            <element signature="n#!!block;n#enterResults#0" expanded="false" />
             <element signature="n#!!block;n#selectResult#0" expanded="false" />
             <element signature="n#!!block;n#resultsMain#0" expanded="false" />
             <element signature="n#!!block;n#loadResultsCreate#0" expanded="false" />
-            <element signature="n#!!block;n#resultsList#0" expanded="false" />
-            <element signature="n#!!block;n#getResultsTable#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/inc/views/event-home.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="34" column="70" lean-forward="true" selection-start-line="34" selection-start-column="70" selection-end-line="34" selection-end-column="70" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/inc/js/event_segments.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="315" column="0" lean-forward="true" selection-start-line="315" selection-start-column="0" selection-end-line="315" selection-end-column="0" />
+        <state relative-caret-position="299">
+          <caret line="783" column="50" lean-forward="true" selection-start-line="783" selection-start-column="50" selection-end-line="783" selection-end-column="50" />
           <folding>
             <element signature="n#!!doc;n#segmentList#0" expanded="false" />
             <element signature="n#!!block;n#segmentList#0" expanded="false" />
@@ -1110,18 +1201,17 @@
             <element signature="n#!!block;n#refreshSegmentList#0" expanded="false" />
             <element signature="n#!!block;n#createSegment#0" expanded="false" />
             <element signature="n#!!block;n#segmentUpdate#0" expanded="false" />
-            <element signature="n#!!doc;n#clearGuestList#0" expanded="false" />
+            <element signature="n#!!block;n#segmentDelete#0" expanded="false" />
+            <element signature="n#!!block;n#clearGuestList#0" expanded="false" />
             <element signature="n#!!block;n#refreshGuestList#0" expanded="false" />
+            <element signature="n#!!block;n#loadGuestUpdate#0" expanded="false" />
             <element signature="n#!!block;n#createGuest#0" expanded="false" />
             <element signature="n#!!block;n#loadGuestCreate#0" expanded="false" />
             <element signature="n#!!block;n#guestUpdate#0" expanded="false" />
+            <element signature="n#!!block;n#guestDelete#0" expanded="false" />
             <element signature="n#!!block;n#selectGuest#0" expanded="false" />
             <element signature="n#!!doc;n#loadScoreCreate#0" expanded="false" />
-            <element signature="n#!!block;n#loadScoreCreate#0" expanded="false" />
             <element signature="n#!!block;n#loadScoreUpdate#0" expanded="false" />
-            <element signature="n#!!block;n#createScore#0" expanded="false" />
-            <element signature="n#!!block;n#refreshScoreList#0" expanded="false" />
-            <element signature="n#!!block;n#scoreUpdate#0" expanded="false" />
             <element signature="n#!!block;n#scoreDelete#0" expanded="false" />
           </folding>
         </state>

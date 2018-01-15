@@ -52,24 +52,6 @@ class RESULTS
     }
 
 
-    public function getResultsbyScore($Id)
-    {
-
-        $sql = "
-        
-        SELECT x.score_result, s.score_name
-        FROM results x
-        JOIN scores s ON x.score_id = s.score_id
-        WHERE x.segment_id = :segmentID
-        
-        
-        
-        ";
-
-
-    }
-
-
     public function getAvByName($sId)
     {
 
@@ -77,7 +59,7 @@ class RESULTS
         
         SELECT
           c.guest_name AS gn,c.horse_name AS hn,
-          avg(x.score_result) AS av
+          CAST(AVG(x.score_result) AS DECIMAL(10,3)) AS av
         FROM results x
         JOIN guests c ON x.guest_id = c.guest_id
         JOIN scores f ON x.score_id = f.score_id
@@ -292,6 +274,7 @@ class RESULTS
     {
         $count = count($data) - 2; //number of results to update
         $response = array();
+        $status = 0;
         $upd = array();
         $keys = array_keys($data);
         $values = array_values($data);
@@ -316,12 +299,13 @@ class RESULTS
             $stmt->bindParam(':rId', $upd['keys'][$i], PDO::PARAM_STR);
             $stmt->execute();
 
-            if ($stmt->rowCount() > 0) {
-                $response['status'][$i] = 'success';
-                $response['message'][$i] = '<span class="fas fa-check-circle"></span> &nbsp; Update successful.';
-            } else {
-                $response['status'][$i] = 'error'; // could not update record
-                $response['message'][$i] = '<span class="fas fa-info-circle"></span> &nbsp; Nothing changed.';
+            if ($stmt->rowCount() > 0 && $status < 1) {
+                $response['status'] = 'success';
+                $status = 1;
+                $response['message'] = '<span class="fas fa-check-circle"></span> &nbsp; Update successful';
+            } elseif ($status < 1) {
+                $response['status'] = 'error'; // could not update record
+                $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; Nothing changed';
             }
 
         }

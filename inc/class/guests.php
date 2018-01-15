@@ -43,7 +43,8 @@ class GUESTS
 
         $sql = "
 
-        SELECT c.guest_name,c.horse_name,c.guest_id,e.event_name,e.location,s.segment_name
+        SELECT c.guest_name AS gn,c.horse_name AS hn,c.guest_id AS gId,
+        e.event_name As en,e.location AS loc,s.segment_name AS sgn
         FROM guests c
         JOIN events e ON c.event_id = e.event_id
         JOIN segments s ON c.segment_id = s.segment_id
