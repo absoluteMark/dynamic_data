@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c49b85b-4997-40c6-9970-8bdf9e401680" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/data_output/single_segment.csv" />
-      <change beforePath="$PROJECT_DIR$/.idea/scoreboard.iml" afterPath="$PROJECT_DIR$/.idea/scoreboard.iml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/data_output/guests.csv" afterPath="$PROJECT_DIR$/data_output/guests.csv" />
-      <change beforePath="$PROJECT_DIR$/data_output/single_host.csv" afterPath="$PROJECT_DIR$/data_output/single_host.csv" />
-      <change beforePath="$PROJECT_DIR$/data_output/single_result.csv" afterPath="$PROJECT_DIR$/data_output/single_result.csv" />
-      <change beforePath="$PROJECT_DIR$/inc/class/class.user.php" afterPath="$PROJECT_DIR$/inc/class/class.user.php" />
-      <change beforePath="$PROJECT_DIR$/inc/class/guests.php" afterPath="$PROJECT_DIR$/inc/class/guests.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.get-guests.php" afterPath="$PROJECT_DIR$/inc/src/ajax.get-guests.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.main.guest.php" afterPath="$PROJECT_DIR$/inc/src/ajax.main.guest.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.main.host.php" afterPath="$PROJECT_DIR$/inc/src/ajax.main.host.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.main.score.php" afterPath="$PROJECT_DIR$/inc/src/ajax.main.score.php" />
-      <change beforePath="$PROJECT_DIR$/inc/src/ajax.main.segment.php" afterPath="$PROJECT_DIR$/inc/src/ajax.main.segment.php" />
-      <change beforePath="$PROJECT_DIR$/inc/styles/style.css" afterPath="$PROJECT_DIR$/inc/styles/style.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -445,7 +431,7 @@
       <workItem from="1515724165553" duration="623000" />
       <workItem from="1515729116546" duration="29991000" />
       <workItem from="1515818970017" duration="13431000" />
-      <workItem from="1515833115606" duration="82464000" />
+      <workItem from="1515833115606" duration="82475000" />
     </task>
     <task id="LOCAL-00001" summary="Add delete function">
       <created>1515720551843</created>
@@ -566,11 +552,18 @@
       <option name="project" value="LOCAL" />
       <updated>1515996617893</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="adds HOST crud and functions">
+      <created>1515998118588</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1515998118588</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="383724000" />
+    <option name="totallyTimeSpent" value="383735000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
