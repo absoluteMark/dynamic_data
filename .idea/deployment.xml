@@ -9,6 +9,13 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="Mamp">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="dynamic_data" />
+          </mappings>
+        </serverdata>
+      </paths>
     </serverData>
     <option name="myAutoUpload" value="ALWAYS" />
   </component>

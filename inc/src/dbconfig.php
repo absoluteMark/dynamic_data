@@ -13,10 +13,10 @@ define('INC_PATH',dirname(__DIR__)."/");
 
 
 $DB_host = "localhost";
-//$DB_user = "alp_admin";
-$DB_user = "root";
-//$DB_pass = "aAx-TBR-Lda-cr4";
-$DB_pass = "root";
+$DB_user = "alp_admin";
+//$DB_user = "root";
+$DB_pass = "aAx-TBR-Lda-cr4";
+//$DB_pass = "root";
 $DB_name = "dynamic_data";
 
 

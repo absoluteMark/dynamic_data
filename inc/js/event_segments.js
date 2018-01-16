@@ -1163,6 +1163,7 @@ function createHost(eventID) {
                     });
                 }
 
+                refreshHostList(eventID);
                 $(submitBtn).html('Create Another ?').removeAttr('disabled');
                 $(closeBtn).removeAttr('disabled');
 
@@ -1174,7 +1175,7 @@ function createHost(eventID) {
         }
     });
 
-    refreshHostList(eventID);
+
 
 }
 

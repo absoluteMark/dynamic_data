@@ -233,40 +233,60 @@ class RESULTS
     public function insertResults($results_array)
     {
 
+        $datafields = array('event_id','segment_id','guest_id','score_id','score_result');
+
         $eventID = $_SESSION['event_id'];
         $segmentID = $results_array['segmentId'];
         $guestID = $results_array['guestId'];
 
-        $sql = "
-        INSERT INTO results(score_result,score_id,event_id,segment_id,guest_id) 
-        VALUES(:score_result,:score_id,:event_id,:segment_id,:guest_id)
-    
-        ";
 
-        $stmt = $this->db->prepare($sql);
         foreach ($results_array as $result => $value) {
-            $scoreID = $result;
-            $score_result = $value;
-            $stmt->bindParam(':score_result', $score_result);
-            $stmt->bindParam(':score_id', $scoreID);
-            $stmt->bindParam(':event_id', $eventID);
-            $stmt->bindParam(':segment_id', $segmentID);
-            $stmt->bindParam(':guest_id', $guestID);
-            $stmt->execute();
-
+            if ($result == "segmentId" || $result == "guestId") {
+            ;
+            } else {
+                $data[] = array(
+                    'event_id' => $eventID,
+                    'segment_id' => $segmentID,
+                    'guest_id' => $guestID,
+                    'score_id' => $result,
+                    '$score_result' => $value
+                );
+            }
         }
 
-        $response['segment_id'] = $segmentID;
 
-        if ($stmt->rowCount() >= 1) {
+        function placeholders($text, $count=0, $separator=","){
+            $result = array();
+            if($count > 0){
+                for($x=0; $x<$count; $x++){
+                    $result[] = $text;
+                }
+            }
 
-            $response['status'] = 'success';
-            $response['message'] = '<span class="fas fa-check-circle"></span> &nbsp; Success.';
-        } else {
-
-            $response['status'] = 'error';
-            $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; Some error occurred.';
+            return implode($separator, $result);
         }
+
+        $this->db->beginTransaction(); // also helps speed up your inserts.
+        $insert_values = array();
+        foreach($data as $d){
+            $question_marks[] = '('  . placeholders('?', sizeof($d)) . ')';
+            $insert_values = array_merge($insert_values, array_values($d));
+        }
+
+        $sql = "INSERT INTO results (" . implode(",", $datafields ) . ") VALUES " .
+            implode(',', $question_marks);
+
+        $stmt = $this->db->prepare ($sql);
+        try {
+            $stmt->execute($insert_values);
+        } catch (PDOException $e){
+            echo $e->getMessage();
+        }
+        $this->db->commit();
+
+        $response = array();
+
+        $response['status'] = 'success';
 
         return $response;
 
@@ -317,7 +337,7 @@ class RESULTS
     }
 
 
-    public function getScoresBySeg($gId,$segmentId)
+    public function getScoresBySeg($gId, $segmentId)
     {
 
         $response = array();
