@@ -26,6 +26,12 @@
 if (isset($_GET['index'])) {
     unset($_SESSION['event_name']);
     unset($_SESSION['event_id']);
+    unset($_SESSION['event_logo']);
+    unset($_SESSION['rs_id']);
+    unset($_SESSION['rs_name']);
+    unset($_SESSION['r_id']);
+    unset($_SESSION['segment_id']);
+    unset($_SESSION['guest_id']);
     header("Location: index.php");
     exit;
 }

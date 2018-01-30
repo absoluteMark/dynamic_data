@@ -10,7 +10,7 @@ session_start();
         <div class="card-header" id="segment-header">
             <h3 class="float-left text-danger" id="mode">Live Mode</h3>
             <h3 class="text-right" id="segment-title">Segments</h3>
-            <button type="button" class="btn btn-warning btn-sm float-right" onclick="loadSegmentCreate()">Add</button>
+            <button id="segment-add" type="button" class="btn btn-warning btn-sm float-right" onclick="loadSegmentCreate()">Add</button>
         </div>
         <div class="card-body" id="segment-body">
             <div class="alert alert-info" role="alert">

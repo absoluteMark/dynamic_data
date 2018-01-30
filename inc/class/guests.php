@@ -91,7 +91,17 @@ class GUESTS
         $stmt->bindParam(':country', $country);
         $stmt->bindParam(':segment_id', $segment_id);
         $stmt->bindParam(':event_id', $event_id);
-        $stmt->execute();
+
+        try {
+            $this->db->beginTransaction();
+            $stmt->execute();
+            $response['r_id'] = $this->db->lastInsertId();
+            $this->db->commit();
+
+        } catch(PDOExecption $e) {
+            $this->db->rollback();
+            print "Error!: " . $e->getMessage() . "</br>";
+        }
 
 
         // check for successful creation
@@ -208,6 +218,37 @@ class GUESTS
         } else {
             $response['status'] = 'error'; // could not delete record
             $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; Nothing changed.';
+        }
+        return $response;
+
+
+    }
+
+
+    public function findRider($name)
+    {
+
+        $response = array();
+
+        $stmt = $this->db->prepare("SELECT * FROM guests WHERE guest_name=:gn");
+        $stmt->execute(array(':gn' => $name));
+        $res = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+        $response['guest'] = $res;
+
+        //print_r($res);
+
+        // check for success
+        if ($stmt->rowCount() > 0) {
+            $_SESSION['r_id'] = $res['guest_id'];
+            $_SESSION['r_name'] = $res['guest_name'];
+            $response['status'] = 'success';
+            $response['message'] = '<span class="fas fa-check-circle"></span> &nbsp; Success.';
+        } else {
+
+            $response['status'] = 'error';
+            $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; Error.';
         }
         return $response;
 

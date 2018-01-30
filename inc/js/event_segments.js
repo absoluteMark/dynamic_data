@@ -67,6 +67,7 @@ function loadSegmentUpdate(segmentID) {
     $('#guest-alert').css('visibility','hidden');
 
 
+
     clearGuestList();
 
     $.ajax({
@@ -84,6 +85,7 @@ function loadSegmentUpdate(segmentID) {
                     $('#segment-body').html(view);
                     $('#mode').html('Edit Mode').toggleClass('text-danger text-primary');
                     $('#segment-title').html('Update Segment');
+                    $('#segment-add').css('visibility','hidden');
 
                     $('#alert').append('<div class="small text-right" id="hint">Update the Segment Details</div>');
 
@@ -122,6 +124,7 @@ function refreshSegmentList() {
         "<div class=\"list-group\" id=\"segment-list\"></div>");
     $('#mode').html('Live Mode').toggleClass('text-danger text-primary');
     $('#segment-title').html('Segments');
+    $('#segment-add').css('visibility','visible');
     segmentList();
 
 }

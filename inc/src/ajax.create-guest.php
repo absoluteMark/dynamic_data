@@ -17,7 +17,12 @@ if ($_POST['guest_name']!="") {
     $country = $_POST['country'];
     $segment_id = $_POST['segmentId'];
 
-    $response = $guest->createGuest($guest_name, $guest_number, $horse_name, $country, $segment_id);
+    $response = $guest->createGuest(
+        $guest_name,
+        $guest_number,
+        $horse_name,
+        $country,
+        $segment_id);
 
 }
 else {

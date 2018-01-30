@@ -67,7 +67,7 @@ class RESULTS
         JOIN events e ON x.event_id = e.event_id
         JOIN segments s ON x.segment_id = s.segment_id
         WHERE x.segment_id = :segmentID
-        GROUP BY c.guest_name
+        GROUP BY c.guest_id
         ORDER BY av DESC
             
       
@@ -99,7 +99,7 @@ class RESULTS
     }
 
 
-    public function getGuestIds($sId)
+    public function getGuestIds($sId,$n = 6)
     {
 
         $sql = "
@@ -108,6 +108,8 @@ class RESULTS
         FROM results x
         JOIN guests g ON x.guest_id = g.guest_id
         WHERE x.segment_id = :segmentID
+        ORDER BY g.guest_id DESC
+        LIMIT $n
         
         ";
 
@@ -122,7 +124,7 @@ class RESULTS
     }
 
 
-    public function getAllResults($sId)
+    public function getAllResults($sId,$x)
     {
 
         $sql = "
@@ -147,15 +149,88 @@ class RESULTS
         $res = $stmt->fetchALL(PDO::FETCH_ASSOC);
         $response['results'] = $res;
         $response['unique'] = $this->numScoresPerSegment($sId);
-        $response['names'] = $this->getGuestIds($sId);
+        //How many results
+        $response['names'] = $this->getGuestIds($sId,$x);
 
-        $keys = array_keys($response['names']);
+        $num = 1;
+        $fields = "";
 
-        print_r($keys);
+        foreach ($response['names'] as $value) {
 
-        foreach ($response['names'] as $key => $value) {
-            print_r($this->getResultDetails($value));
+            $fields = $fields . "r" . $num . ",";
+            $fields = $fields . "h" . $num . ",";
+
+            $names = $this->getResultName($value);
+
+            foreach ($names as $sn) {
+                $res_keys = array();
+                $res_keys = array_merge($res_keys, $sn);
+
+                foreach ($res_keys as $keysn){
+
+                    $fields = $fields . $keysn . $num . ",";
+
+                }
+
+            }
+
+            $fields = $fields . "av" . $num . ",";
+            $num++;
+
         }
+
+        $fields = $fields . "en" . ",";
+        $fields = $fields . "loc" . ",";
+        $fields = $fields . "arena" . ",";
+        $fields = $fields . "sgn" . ",";
+        $fields = $fields . "end" . PHP_EOL;
+
+        $values = "";
+
+        foreach ($response['names'] as $value) {
+
+            $details = $this->getResultDetails($value);
+
+            $values = $values . $details['results'][0]['guest_name'] . ",";
+            $values = $values . $details['results'][0]['horse_name'] . ",";
+
+            $results = $this->getResult($value);
+
+            $total = 0;
+
+            foreach ($results as $sr) {
+                $res_val = array();
+                $res_val = array_merge($res_val, $sr);
+
+                foreach ($res_val as $valsr){
+
+                    $values = $values . $valsr . ",";
+                    $total = $total + $valsr;
+
+                }
+
+            }
+
+            $average = round($total / $response['unique'],3);
+            $values = $values . $average . ",";
+        }
+
+        $values = $values . $_SESSION['event_name'] . ",";
+        $values = $values . $details['results'][0]['location'] . ",";
+        $values = $values . $_SESSION['rs_name'] . ",";
+        $values = $values . $details['results'][0]['segment_name'] . ",";
+        $values = $values . "end";
+
+
+        $my_file = 'results_scroll.csv';
+        $this_dir = dirname(__FILE__);
+        $parent_dir = realpath($this_dir . '/..');
+        $grandparent_dir = realpath($parent_dir . '/..');
+        $target_path = $grandparent_dir . '/data_output/' . $my_file;
+        $handle = fopen($target_path, 'w') or die('Cannot open file: ' . $my_file);
+        fwrite($handle, $fields);
+        fwrite($handle, $values);
+        fclose($handle);
 
 
         // check for success
@@ -176,6 +251,51 @@ class RESULTS
     }
 
 
+    public function getResult($gId)
+
+    {
+
+        $sql = "
+        SELECT 
+          x.score_result AS sr
+        FROM results x
+        WHERE x.guest_id = :guestID    
+        ";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':guestID', $gId);
+        $stmt->execute();
+        $res = $stmt->fetchALL(PDO::FETCH_COLUMN,0);
+        $response[] = $res;
+
+
+        return $response;
+    }
+
+    public function getResultName($gId)
+
+    {
+
+        $sql = "
+        SELECT 
+          f.score_name AS sn
+        FROM results x
+        JOIN scores f ON x.score_id = f.score_id
+        WHERE x.guest_id = :guestID    
+        ";
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':guestID', $gId);
+        $stmt->execute();
+        $res = $stmt->fetchALL(PDO::FETCH_COLUMN,0);
+
+        $response[] = $res;
+
+
+        return $response;
+    }
+
+
     public function getResultDetails($gId)
 
     {
@@ -184,7 +304,7 @@ class RESULTS
         SELECT 
           f.score_name,x.score_result,x.result_id,x.score_id,
           g.guest_name, g.horse_name,
-          e.event_name, s.segment_name
+          e.event_name, s.segment_name, e.location
         FROM results x
         JOIN scores f ON x.score_id = f.score_id
         JOIN guests g ON x.guest_id = g.guest_id
@@ -201,7 +321,7 @@ class RESULTS
 
         $sql = "
         SELECT 
-          g.guest_name,g.horse_name
+          g.guest_name AS gn,g.horse_name AS hn
         FROM guests g
         WHERE g.guest_id = :guestID    
         ";
@@ -233,7 +353,7 @@ class RESULTS
     public function insertResults($results_array)
     {
 
-        $datafields = array('event_id','segment_id','guest_id','score_id','score_result');
+        $datafields = array('event_id', 'segment_id', 'guest_id', 'score_id', 'score_result');
 
         $eventID = $_SESSION['event_id'];
         $segmentID = $results_array['segmentId'];
@@ -242,7 +362,7 @@ class RESULTS
 
         foreach ($results_array as $result => $value) {
             if ($result == "segmentId" || $result == "guestId") {
-            ;
+                ;
             } else {
                 $data[] = array(
                     'event_id' => $eventID,
@@ -255,10 +375,11 @@ class RESULTS
         }
 
 
-        function placeholders($text, $count=0, $separator=","){
+        function placeholders($text, $count = 0, $separator = ",")
+        {
             $result = array();
-            if($count > 0){
-                for($x=0; $x<$count; $x++){
+            if ($count > 0) {
+                for ($x = 0; $x < $count; $x++) {
                     $result[] = $text;
                 }
             }
@@ -268,18 +389,18 @@ class RESULTS
 
         $this->db->beginTransaction(); // also helps speed up your inserts.
         $insert_values = array();
-        foreach($data as $d){
-            $question_marks[] = '('  . placeholders('?', sizeof($d)) . ')';
+        foreach ($data as $d) {
+            $question_marks[] = '(' . placeholders('?', sizeof($d)) . ')';
             $insert_values = array_merge($insert_values, array_values($d));
         }
 
-        $sql = "INSERT INTO results (" . implode(",", $datafields ) . ") VALUES " .
+        $sql = "INSERT INTO results (" . implode(",", $datafields) . ") VALUES " .
             implode(',', $question_marks);
 
-        $stmt = $this->db->prepare ($sql);
+        $stmt = $this->db->prepare($sql);
         try {
             $stmt->execute($insert_values);
-        } catch (PDOException $e){
+        } catch (PDOException $e) {
             echo $e->getMessage();
         }
         $this->db->commit();
@@ -383,6 +504,66 @@ class RESULTS
 
         return $response;
 
+
+    }
+
+    public function autoResults($data)
+    {
+
+        $datafields = array('event_id', 'segment_id', 'guest_id', 'score_id', 'score_result');
+
+
+        function placeholders2($text, $count = 0, $separator = ",")
+        {
+            $result = array();
+            if ($count > 0) {
+                for ($x = 0; $x < $count; $x++) {
+                    $result[] = $text;
+                }
+            }
+
+            return implode($separator, $result);
+        }
+
+
+        $insert_values = array();
+
+        echo "<h2>Results Array Response</h2>";
+
+        foreach ($data as $d) {
+            $question_marks[] = '(' . placeholders2('?', sizeof($d)) . ')';
+            $insert_values = array_merge($insert_values, array_values($d));
+
+        }
+
+        foreach ($question_marks as $key => $value) {
+
+            echo $key . " = " . $value . "<br />";
+
+        }
+
+        foreach ($insert_values as $key => $value) {
+
+            echo $key . " = " . $value . "<br />";
+
+        }
+
+        $sql = "INSERT INTO results (" . implode(",", $datafields) . ") VALUES " .
+            implode(',', $question_marks);
+
+        $stmt = $this->db->prepare($sql);
+        try {
+            $stmt->execute($insert_values);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+        $this->db->commit();
+
+        $response = array();
+
+        $response['status'] = 'success';
+
+        return $response;
 
     }
 

@@ -1,4 +1,4 @@
-document.getElementById("demo").innerHTML = "Version 1.0.0 Alpha";
+document.getElementById("demo").innerHTML = "Version 2.0.0 Alpha";
 
 $(document).ready(function () {
 

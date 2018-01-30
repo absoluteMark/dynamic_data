@@ -11,6 +11,7 @@ if ($_POST['segmentId']) {
     $results = new \App\Scoreboard\ RESULTS($DB_con);
 
     $response = $results->getAvByName($segmentID);
+    $results->getAllResults($segmentID,12);
 
 
     //Output to csv file section

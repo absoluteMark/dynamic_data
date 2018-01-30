@@ -59,7 +59,7 @@ class SCORES
     }
 
 
-    public function createScore($name,$sId)
+    public function createScore($name, $sId)
     {
 
         $response = array();
@@ -96,7 +96,7 @@ class SCORES
 
         $sql = "
         
-        SELECT s.score_name as 'Score Name'
+        SELECT s.score_name AS 'Score Name'
         FROM scores s 
         WHERE s.score_id = :scoreId
         
@@ -124,7 +124,8 @@ class SCORES
 
     }
 
-    public function updateScore($name,$id){
+    public function updateScore($name, $id)
+    {
 
 
         $sql = "UPDATE scores SET score_name = :scName   
@@ -146,7 +147,8 @@ class SCORES
 
     }
 
-    public function deleteScore($id) {
+    public function deleteScore($id)
+    {
 
         $sql = "DELETE FROM scores WHERE score_id =  :scId";
         $stmt = $this->db->prepare($sql);
@@ -165,4 +167,113 @@ class SCORES
 
     }
 
+    public function insertScores($array)
+    {
+
+        echo "<h2>Scores received</h2>";
+
+        foreach ($array as $key => $value) {
+
+            echo $key . " = " . $value . "<br />";
+
+        }
+
+
+        $datafields = array('event_id', 'score_type', 'segment_id', 'score_name');
+
+        $eventID = $_SESSION['event_id'];
+        $segmentID = $_SESSION['rs_id'];
+        $riderID = $_SESSION['r_id'];
+
+        $data = array();
+
+        foreach ($array as $name => $value) {
+            if ($name == "type" || $name == "location" || $name == "Total") {
+                ;
+            } else {
+                $data[] = array(
+                    'event_id' => $eventID,
+                    'score_type'=> $riderID,
+                    'segment_id' => $segmentID,
+                    'score_name' => $name
+                );
+            }
+        }
+
+
+        function placeholders($text, $count = 0, $separator = ",")
+        {
+            $result = array();
+            if ($count > 0) {
+                for ($x = 0; $x < $count; $x++) {
+                    $result[] = $text;
+                }
+            }
+
+            return implode($separator, $result);
+        }
+
+        $this->db->beginTransaction(); // also helps speed up your inserts.
+        $insert_values = array();
+        foreach ($data as $d) {
+            $question_marks[] = '(' . placeholders('?', sizeof($d)) . ')';
+            $insert_values = array_merge($insert_values, array_values($d));
+        }
+
+        foreach ($question_marks as $key=>$value){
+
+            echo $key . " = " . $value . "<br />";
+
+        }
+
+        foreach ($insert_values as $key=>$value){
+
+            echo $key . " = " . $value . "<br />";
+
+        }
+
+        $sql = "INSERT INTO scores (" . implode(",", $datafields) . ") VALUES " .
+            implode(',', $question_marks);
+
+        $stmt = $this->db->prepare($sql);
+        try {
+            $stmt->execute($insert_values);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+        $this->db->commit();
+
+
+        $response['status'] = "Entered Scores";
+
+        return $response;
+
+    }
+
+    public function findScores($r_id)
+    {
+
+        $response = array();
+
+        $stmt = $this->db->prepare("SELECT score_id FROM scores WHERE score_type=:gId");
+        $stmt->execute(array(':gId' => $r_id));
+        $res = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+        $response['scores'] = $res;
+
+        //print_r($res);
+
+        // check for success
+        if ($stmt->rowCount() > 0) {
+            $response['status'] = 'success';
+            $response['message'] = 'Scores already exist.';
+        } else {
+
+            $response['status'] = 'error';
+            $response['message'] = 'Scores do not exist.';
+        }
+        return $response;
+
+
+    }
 }

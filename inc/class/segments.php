@@ -77,8 +77,8 @@ class SEGMENTS
         // check for success
         if ($stmt->rowCount() == 1) {
 
-            $_SESSION['segment_name'] = $res['segment_name'];
-            $_SESSION['segment_id'] = $res['segment_id'];
+            $_response['segment_name'] = $res['segment_name'];
+            $_response['segment_id'] = $res['segment_id'];
 
             $response['status'] = 'success';
             $response['message'] = '<span class="fas fa-check-circle"></span> &nbsp; Success.';
@@ -109,12 +109,14 @@ class SEGMENTS
 
         // check for successful creation
         if ($stmt->rowCount() == 1) {
+            $response['rs_id'] = $this->db->lastInsertId();
+            $response['rs_name'] = $segment_name;
             $response['status'] = 'success';
             $response['message'] = '<span class="fas fa-check-circle"></span> &nbsp; Segment created successfully.';
         } else {
 
             $response['status'] = 'error'; // could not create record
-            $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; Could not create class.';
+            $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; Could not create segment.';
         }
         return $response;
 
@@ -163,7 +165,41 @@ class SEGMENTS
 
     }
 
+    /**
+     * @param $name
+     * @param $eid
+     * @return array
+     */
+    public function findSegment($name, $eid)
+    {
 
+        $response = array();
+
+        $stmt = $this->db->prepare("SELECT * FROM segments WHERE segment_name = :sgn AND event_id = :eid");
+        $stmt->execute(array(':sgn' => $name, ':eid' => $eid));
+        $res = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+        $response['segment'] = $res;
+
+        //print_r($res);
+
+        // check for success
+        if ($stmt->rowCount() > 0) {
+            $_SESSION['rs_id'] = $res['segment_id'];
+            $_SESSION['rs_name'] = $res['segment_name'];
+            $response['status'] = 'Old Segment';
+            $response['message'] = '<span class="fas fa-check-circle"></span> &nbsp; Segment already exists.';
+        } else {
+            $_SESSION['rs_id'] = "";
+            $_SESSION['rs_name'] = "";
+            $response['status'] = 'New Segment';
+            $response['message'] = '<span class="fas fa-info-circle"></span> &nbsp; Segment does not exist.';
+        }
+        return $response;
+
+
+    }
 
 
 }
